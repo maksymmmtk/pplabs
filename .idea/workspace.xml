@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="63b57a22-c77c-4491-abcc-4401e36a1cea" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "maksymmmtk"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/maksymmmtk/pplabs",
+    "accountId": "4be4f285-c5fc-4cc8-b851-377ddc96c5e9"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2lswA2AlkHc4IVnbQfmPpjifUYz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/maksym/IdeaProjects/pp2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/maksym/IdeaProjects/workspace/src/Main.java",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="lab1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="lab1" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63b57a22-c77c-4491-abcc-4401e36a1cea" name="Changes" comment="" />
+      <created>1725981947290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1725981947290</updated>
+      <workItem from="1725981950207" duration="894000" />
+      <workItem from="1726005765548" duration="3921000" />
+      <workItem from="1726034364801" duration="250000" />
+      <workItem from="1726034630248" duration="5000" />
+      <workItem from="1726038948975" duration="2712000" />
+      <workItem from="1726048055243" duration="1095000" />
+      <workItem from="1726055163012" duration="1339000" />
+      <workItem from="1726056982736" duration="913000" />
+      <workItem from="1726092413124" duration="1020000" />
+      <workItem from="1726159504234" duration="21000" />
+      <workItem from="1726248827746" duration="672000" />
+      <workItem from="1726260598776" duration="2224000" />
+      <workItem from="1726304458910" duration="3442000" />
+      <workItem from="1726346082947" duration="2728000" />
+      <workItem from="1726349927952" duration="52000" />
+      <workItem from="1726644081678" duration="888000" />
+      <workItem from="1727517361541" duration="38000" />
+      <workItem from="1727517531779" duration="4000" />
+      <workItem from="1727517581102" duration="14000" />
+      <workItem from="1727517900754" duration="794000" />
+      <workItem from="1727637209066" duration="11000" />
+      <workItem from="1727637421036" duration="6000" />
+      <workItem from="1727637439072" duration="3000" />
+      <workItem from="1731440057386" duration="477000" />
+      <workItem from="1731440547276" duration="1275000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
