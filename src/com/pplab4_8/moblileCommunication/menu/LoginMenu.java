@@ -9,33 +9,29 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Клас LoginMenu реалізує інтерфейс Command і відповідає за логіку входу
- * користувача в систему, надаючи вибір між ролями мобільного оператора та абонента.
+ * Клас LoginMenu реалізує інтерфейс Command і надає функціональність для входу користувачів.
+ * Він дозволяє користувачам увійти як оператор мобільного оператора або як абонент.
+ * Залежно від ролі користувача, надаються різні дії та меню.
  */
 public class LoginMenu implements Command {
 
-    // Словники для зберігання даних облікових записів операторів і абонентів
     private final Map<Map<String, String>, MobileNetworkService> services;
     private final Map<Map<String, String>, MobileSubscriber> subscribers;
-
-    // Мапи для облікових записів
     private final Map<String, String> serviceAccounts = new HashMap<>();
     private final Map<String, String> subscriberAccounts = new HashMap<>();
-
-    // Сканер для введення даних користувача
     private final Scanner scanner;
 
     /**
-     * Конструктор класу, ініціалізує карти для операторів, абонентів та їх облікових записів.
-     * @param services карти для мобільних операторів
-     * @param subscribers карти для абонентів
+     * Конструктор для ініціалізації LoginMenu з наданими сервісами та абонентами.
+     *
+     * @param services Карта мобільних мережевих сервісів.
+     * @param subscribers Карта мобільних абонентів.
      */
     public LoginMenu(Map<Map<String, String>, MobileNetworkService> services, Map<Map<String, String>, MobileSubscriber> subscribers) {
         this.services = services;
         this.subscribers = subscribers;
         this.scanner = new Scanner(System.in);
 
-        // Ініціалізація облікових записів операторів і абонентів
         for (Map<String, String> key : services.keySet()) {
             this.serviceAccounts.putAll(key);
         }
@@ -45,26 +41,23 @@ public class LoginMenu implements Command {
     }
 
     /**
-     * Метод виконує логіку входу та вибір ролі (оператор або абонент),
-     * а потім виконує відповідну команду для кожної ролі.
+     * Виконує меню входу, дозволяючи користувачу увійти залежно від їх ролі.
+     * Користувач вибирає свою роль і вводить облікові дані.
      */
     @Override
     public void execute() {
         while (true) {
-            // Вибір ролі користувача (мобільний оператор або абонент)
             int role = chooseRole();
             if (role == 1) {
-                // Вхід як мобільний оператор
                 MobileNetworkService service = loginService(serviceAccounts);
                 if (service != null) {
-                    handleService(service);  // Обробка дій для мобільного оператора
+                    handleService(service);
                     break;
                 }
             } else if (role == 2) {
-                // Вхід як абонент
                 MobileSubscriber subscriber = loginSubscriber(subscriberAccounts);
                 if (subscriber != null) {
-                    handleSubscriber(subscriber);  // Обробка дій для абонента
+                    handleSubscriber(subscriber);
                     break;
                 }
             }
@@ -72,8 +65,9 @@ public class LoginMenu implements Command {
     }
 
     /**
-     * Метод для вибору ролі користувача (оператор або абонент).
-     * @return обрану роль (1 - оператор, 2 - абонент)
+     * Запитує користувача вибрати роль (мобільний оператор або абонент).
+     *
+     * @return Ціле число, що представляє вибір ролі користувача.
      */
     private int chooseRole() {
         while (true) {
@@ -94,9 +88,11 @@ public class LoginMenu implements Command {
     }
 
     /**
-     * Метод для входу як мобільний оператор, перевіряє облікові записи.
-     * @param accounts карти з обліковими записами операторів
-     * @return відповідний об'єкт MobileNetworkService або null, якщо дані неправильні
+     * Логін мобільного оператора.
+     * Користувач вводить ім'я та пароль, і якщо вони вірні, повертається відповідний сервіс.
+     *
+     * @param accounts Карта облікових записів для операторів.
+     * @return Мобільний оператор, якщо введені дані правильні, або null, якщо помилкові.
      */
     private MobileNetworkService loginService(Map<String, String> accounts) {
         System.out.print("\nВведіть ім'я мобільного оператора: ");
@@ -106,16 +102,18 @@ public class LoginMenu implements Command {
 
         if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
             System.out.println("Вхід успішний.");
-            return services.get(Map.of(username, password));  // Повертаємо сервіс для оператора
+            return services.get(Map.of(username, password));
         }
         System.out.println("Невірне ім'я або пароль. Спробуйте ще раз.");
         return null;
     }
 
     /**
-     * Метод для входу як абонент, перевіряє облікові записи.
-     * @param accounts карти з обліковими записами абонентів
-     * @return відповідний об'єкт MobileSubscriber або null, якщо дані неправильні
+     * Логін абонента.
+     * Користувач вводить ім'я та пароль абонента, і якщо вони вірні, повертається відповідний абонент.
+     *
+     * @param accounts Карта облікових записів для абонентів.
+     * @return Абонент, якщо введені дані правильні, або null, якщо помилкові.
      */
     private MobileSubscriber loginSubscriber(Map<String, String> accounts) {
         System.out.print("\nВведіть ім'я абонента: ");
@@ -125,20 +123,21 @@ public class LoginMenu implements Command {
 
         if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
             System.out.println("Вхід успішний.");
-            return subscribers.get(Map.of(username, password));  // Повертаємо абонента
+            return subscribers.get(Map.of(username, password));
         }
         System.out.println("Невірне ім'я або пароль. Спробуйте ще раз.");
         return null;
     }
 
     /**
-     * Обробка дій для мобільного оператора після успішного входу.
-     * @param service мобільний оператор
+     * Обробляє дії мобільного оператора після успішного входу.
+     * Виводить меню для оператора, з можливістю додавати, редагувати, видаляти або переглядати тарифи.
+     *
+     * @param service Мобільний оператор, який увійшов в систему.
      */
     private void handleService(MobileNetworkService service) {
         System.out.printf("\nВи увійшли як мобільний оператор %s. Доступні дії:", service.getName());
 
-        // Створення команд для оператора
         Map<Integer, Command> commands = Map.of(
                 1, new AddTariff(service),
                 2, new EditTariff(service),
@@ -146,14 +145,15 @@ public class LoginMenu implements Command {
                 4, new ViewTariffs(service)
         );
 
-        // Відкривається основне меню для оператора
         MainMenu menu = new MainMenu(commands, 1);
         menu.execute();
     }
 
     /**
-     * Обробка дій для абонента після успішного входу.
-     * @param subscriber мобільний абонент
+     * Обробляє дії абонента після успішного входу.
+     * Виводить список операторів і дозволяє абоненту вибрати оператора для взаємодії.
+     *
+     * @param subscriber Абонент, який увійшов в систему.
      */
     private void handleSubscriber(MobileSubscriber subscriber) {
         System.out.printf("\nВи увійшли як абонент %s. ", subscriber.getName());
@@ -165,23 +165,21 @@ public class LoginMenu implements Command {
             System.out.print("Введіть назву оператора (0 для виходу): ");
             String operatorName = scanner.nextLine().toLowerCase();
 
-            if (operatorName.equals("0")) {
-                break;  // Вихід з меню
+            if(operatorName.equals("0")) {
+                break;
             }
 
-            // Пошук і вибір оператора
             for (MobileNetworkService service : services.values()) {
                 if (service.getName().toLowerCase().equals(operatorName.toLowerCase())) {
                     System.out.printf("\nВи обрали мобільного оператора %s. Доступні дії:", service.getName());
 
-                    subscriber.setService(service);  // Встановлення вибраного оператора
+                    subscriber.setService(service);
                     Map<Integer, Command> commands = Map.of(
                             1, new SearchTariff(subscriber.getService()),
                             2, new ViewTariffs(subscriber.getService()),
                             3, new ViewPersonalTariff(subscriber)
                     );
 
-                    // Відкривається основне меню для абонента
                     MainMenu menu = new MainMenu(commands, 2);
                     menu.execute();
                     break;
