@@ -1,4 +1,4 @@
-package com.pplab4_8.moblileCommunication.command;
+package com.pplab4_8.mobileCommunication.commands;
 
 /**
  * Інтерфейс Command визначає стандартний контракт для всіх команд,
