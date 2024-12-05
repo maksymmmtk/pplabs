@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainMenu.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.menu</a> &gt; <span class="el_source">MainMenu.java</span></div><h1>MainMenu.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.menu;
+
+import com.pplab4_8.mobileCommunication.commands.Command;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ * Клас MainMenu представляє головне меню, яке дає змогу вибирати та виконувати команди залежно від ролі користувача.
+ */
+public class MainMenu implements Command {
+<span class="fc" id="L13">    private final Map&lt;Integer, Command&gt; commands = new HashMap&lt;&gt;();</span>
+    private String role;
+    private Scanner scanner;
+
+    /**
+     * Конструктор MainMenu.
+     *
+     * @param commands мапа, яка відображає номер команди до об'єкта {@code Command}.
+     * @param role     роль користувача (1 для оператора, 2 для абонента).
+     * @param scanner  сканер для читання вводу користувача.
+     */
+<span class="fc" id="L24">    public MainMenu(Map&lt;Integer, Command&gt; commands, Integer role, Scanner scanner) {</span>
+<span class="fc" id="L25">        this.commands.putAll(commands);</span>
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        if (role == 1) this.role = &quot;Мобільний оператор&quot;;</span>
+<span class="nc" id="L27">        else this.role = &quot;Абонент&quot;;</span>
+<span class="fc" id="L28">        this.scanner = scanner;</span>
+<span class="fc" id="L29">    }</span>
+
+    /**
+     * Повертає мапу команд, доступних у меню.
+     *
+     * @return мапа команд.
+     */
+    public Map&lt;Integer, Command&gt; getCommands() {
+<span class="nc" id="L37">        return commands;</span>
+    }
+
+    /**
+     * Повертає роль користувача.
+     *
+     * @return рядок, що представляє роль (&quot;Мобільний оператор&quot; або &quot;Абонент&quot;).
+     */
+    public String getRole() {
+<span class="nc" id="L46">        return role;</span>
+    }
+
+    /**
+     * Відображає доступні команди в меню для відповідної ролі.
+     *
+     * @param role роль користувача.
+     */
+    public void showMenu(String role) {
+<span class="fc" id="L55">        System.out.println(&quot;\n---------- &quot; + role + &quot; ----------&quot;);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        for (Map.Entry&lt;Integer, Command&gt; entry : commands.entrySet()) {</span>
+<span class="fc" id="L57">            System.out.println(entry.getKey() + &quot;. &quot; + entry.getValue().getName());</span>
+<span class="fc" id="L58">        }</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Основний цикл виконання меню.
+     * Дозволяє користувачу вибирати команди для виконання або вийти з меню.
+     */
+    @Override
+    public void execute() {
+        while (true) {
+<span class="fc" id="L68">            showMenu(role); // Відображення меню.</span>
+<span class="fc" id="L69">            System.out.print(&quot;Введіть номер команди для виконання (0 для повернення назад): &quot;);</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            if (scanner.hasNextInt()) { // Перевірка, чи введено число.</span>
+<span class="fc" id="L72">                int choice = scanner.nextInt();</span>
+<span class="fc" id="L73">                Command command = commands.get(choice); // Отримання команди за номером.</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">                if (command != null) {</span>
+<span class="fc" id="L75">                    command.execute(); // Виконання вибраної команди.</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">                } else if (choice == 0) {</span>
+<span class="fc" id="L77">                    System.out.println(&quot;Вихід з меню.&quot;);</span>
+<span class="fc" id="L78">                    break; // Вихід з циклу.</span>
+                } else {
+<span class="fc" id="L80">                    System.out.println(&quot;Невірна команда. Спробуйте ще раз.&quot;);</span>
+                }
+<span class="fc" id="L82">            } else {</span>
+<span class="fc" id="L83">                System.out.println(&quot;Будь ласка, введіть числове значення.&quot;);</span>
+<span class="fc" id="L84">                scanner.next(); // Очищення некоректного вводу.</span>
+            }
+        }
+<span class="fc" id="L87">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

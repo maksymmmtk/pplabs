@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TariffPrepaid.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.tariffs</a> &gt; <span class="el_source">TariffPrepaid.java</span></div><h1>TariffPrepaid.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.tariffs;
+
+/**
+ * Клас TariffPrepaid представляє тариф на передоплату, який включає базову інформацію про тариф,
+ * таку як назва, місячна плата, кількість хвилин дзвінків та обсяг інтернет-трафіку.
+ * Цей клас також дозволяє відслідковувати кількість підключених абонентів.
+ */
+public class TariffPrepaid {
+    private String name;  // Назва тарифу
+    private float monthlyFee;  // Місячна абонплата
+    private int callMinutesCount;  // Кількість хвилин дзвінків
+    private float internetGigabytesCount;  // Кількість гігабайтів інтернету
+<span class="fc" id="L13">    private int subscribersCount = 0;  // Кількість підключених абонентів (за замовчуванням 0)</span>
+
+    /**
+     * Конструктор для створення тарифу на передоплату.
+     *
+     * @param name               назва тарифу.
+     * @param monthlyFee         місячна абонплата.
+     * @param callMinutesCount   кількість хвилин дзвінків.
+     * @param internetGigabytesCount кількість гігабайтів інтернет-трафіку.
+     */
+<span class="fc" id="L23">    public TariffPrepaid(String name, float monthlyFee, int callMinutesCount, float internetGigabytesCount) {</span>
+<span class="fc" id="L24">        this.name = name;</span>
+<span class="fc" id="L25">        this.monthlyFee = monthlyFee;</span>
+<span class="fc" id="L26">        this.callMinutesCount = callMinutesCount;</span>
+<span class="fc" id="L27">        this.internetGigabytesCount = internetGigabytesCount;</span>
+<span class="fc" id="L28">    }</span>
+
+    /**
+     * Повертає назву тарифу.
+     *
+     * @return назва тарифу.
+     */
+    public String getName() {
+<span class="fc" id="L36">        return name;</span>
+    }
+
+    /**
+     * Повертає щомісячну абонплату.
+     *
+     * @return щомісячна абонплата.
+     */
+    public float getMonthlyFee() {
+<span class="fc" id="L45">        return monthlyFee;</span>
+    }
+
+    /**
+     * Повертає кількість хвилин для дзвінків.
+     *
+     * @return кількість хвилин дзвінків.
+     */
+    public int getCallMinutesCount() {
+<span class="fc" id="L54">        return callMinutesCount;</span>
+    }
+
+    /**
+     * Повертає кількість гігабайтів інтернету.
+     *
+     * @return кількість гігабайтів інтернету.
+     */
+    public float getInternetGigabytesCount() {
+<span class="fc" id="L63">        return internetGigabytesCount;</span>
+    }
+
+    /**
+     * Повертає кількість підключених абонентів.
+     *
+     * @return кількість підключених абонентів.
+     */
+    public int getSubscribersCount() {
+<span class="fc" id="L72">        return subscribersCount;</span>
+    }
+
+    /**
+     * Встановлює назву тарифу.
+     *
+     * @param name назва тарифу.
+     */
+    public void setName(String name) {
+<span class="fc" id="L81">        this.name = name;</span>
+<span class="fc" id="L82">    }</span>
+
+    /**
+     * Встановлює щомісячну абонплату.
+     *
+     * @param monthlyFee місячна абонплата.
+     */
+    public void setMonthlyFee(float monthlyFee) {
+<span class="fc" id="L90">        this.monthlyFee = monthlyFee;</span>
+<span class="fc" id="L91">    }</span>
+
+    /**
+     * Встановлює кількість хвилин для дзвінків.
+     *
+     * @param callMinutesCount кількість хвилин дзвінків.
+     */
+    public void setCallMinutesCount(int callMinutesCount) {
+<span class="fc" id="L99">        this.callMinutesCount = callMinutesCount;</span>
+<span class="fc" id="L100">    }</span>
+
+    /**
+     * Встановлює кількість гігабайтів інтернету.
+     *
+     * @param internetGigabytesCount кількість гігабайтів інтернету.
+     */
+    public void setInternetGigabytesCount(float internetGigabytesCount) {
+<span class="fc" id="L108">        this.internetGigabytesCount = internetGigabytesCount;</span>
+<span class="fc" id="L109">    }</span>
+
+    /**
+     * Додає одного підключеного абонента.
+     */
+    public void addSubscriber() {
+<span class="fc" id="L115">        this.subscribersCount++;</span>
+<span class="fc" id="L116">    }</span>
+
+    /**
+     * Видаляє одного підключеного абонента.
+     */
+    public void subSubscriber() {
+<span class="fc" id="L122">        this.subscribersCount--;</span>
+<span class="fc" id="L123">    }</span>
+
+    /**
+     * Повертає строкове представлення тарифу.
+     *
+     * @return рядок, який містить усі основні характеристики тарифу.
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L132">        return String.format(</span>
+                &quot;Тариф: %s, Місячна плата: %.2f, Хвилини дзвінків: %d, Гігабайти інтернету: %.2f, Кількість клієнтів: %d&quot;,
+<span class="fc" id="L134">                name, monthlyFee, callMinutesCount, internetGigabytesCount, subscribersCount</span>
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

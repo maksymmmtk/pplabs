@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MobileNetworkService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.service</a> &gt; <span class="el_source">MobileNetworkService.java</span></div><h1>MobileNetworkService.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.service;
+
+import com.pplab4_8.mobileCommunication.tariffs.*;
+import com.pplab4_8.mobileCommunication.users.MobileNetwork;
+
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * Клас MobileNetworkService представляє сервіс для управління тарифами та користувачами мобільної мережі.
+ */
+public class MobileNetworkService {
+    private MobileNetwork network;
+
+    /**
+     * Конструктор MobileNetworkService.
+     *
+     * @param network об'єкт мобільної мережі {@code MobileNetwork}, яким управляє сервіс.
+     */
+<span class="fc" id="L20">    public MobileNetworkService(MobileNetwork network) {</span>
+<span class="fc" id="L21">        this.network = network;</span>
+<span class="fc" id="L22">    }</span>
+
+    /**
+     * Повертає мобільну мережу, яка керується цим сервісом.
+     *
+     * @return об'єкт {@code MobileNetwork}.
+     */
+    public MobileNetwork getNetwork() {
+<span class="fc" id="L30">        return network;</span>
+    }
+
+    /**
+     * Додає новий тариф до мобільної мережі.
+     *
+     * @param tariff тариф, який необхідно додати.
+     */
+    public void addTariff(TariffPrepaid tariff) {
+<span class="fc" id="L39">        network.addTariff(tariff);</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * Редагує існуючий тариф, замінюючи його новою версією.
+     *
+     * @param oldTariff    існуючий тариф, який необхідно замінити.
+     * @param updatedTariff новий тариф, який замінить старий.
+     */
+    public void editTariff(TariffPrepaid oldTariff, TariffPrepaid updatedTariff) {
+<span class="fc" id="L49">        network.removeTariff(oldTariff);</span>
+<span class="fc" id="L50">        network.addTariff(updatedTariff);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * Видаляє тариф з мобільної мережі.
+     *
+     * @param tariff тариф, який необхідно видалити.
+     */
+    public void removeTariff(TariffPrepaid tariff) {
+<span class="fc" id="L59">        network.removeTariff(tariff);</span>
+<span class="fc" id="L60">    }</span>
+
+    /**
+     * Повертає список всіх тарифів у мобільній мережі.
+     *
+     * @return список тарифів {@code List&lt;TariffPrepaid&gt;}.
+     */
+    public List&lt;TariffPrepaid&gt; viewTariffs() {
+<span class="fc" id="L68">        return network.getTariffs();</span>
+    }
+
+    /**
+     * Пошук тарифу за його назвою.
+     *
+     * @param name назва тарифу для пошуку.
+     * @return знайдений тариф або {@code null}, якщо тариф не знайдено.
+     */
+    public TariffPrepaid searchTariffByName(String name) {
+<span class="fc" id="L78">        return network.getTariffByName(name);</span>
+    }
+
+    /**
+     * Пошук тарифу в діапазоні абонплати.
+     *
+     * @param minFee мінімальна абонплата.
+     * @param maxFee максимальна абонплата.
+     * @return знайдений тариф або {@code null}, якщо тариф не знайдено.
+     */
+    public TariffPrepaid searchTariffsByRange(float minFee, float maxFee) {
+<span class="fc" id="L89">        return network.getTariffs().stream()</span>
+<span class="pc bpc" id="L90" title="1 of 4 branches missed.">                .filter(tariff -&gt; tariff.getMonthlyFee() &gt;= minFee &amp;&amp; tariff.getMonthlyFee() &lt;= maxFee)</span>
+<span class="fc" id="L91">                .findFirst()</span>
+<span class="fc" id="L92">                .orElse(null);</span>
+    }
+
+    /**
+     * Розраховує загальну кількість клієнтів у мобільній мережі.
+     *
+     * @return кількість клієнтів.
+     */
+    public int calculateTotalClients() {
+<span class="fc" id="L101">        return network.getTariffs().stream().mapToInt(TariffPrepaid::getSubscribersCount).sum();</span>
+    }
+
+    /**
+     * Сортує тарифи у мобільній мережі за абонплатою (у порядку зростання).
+     */
+    public void sortTariffsByFee() {
+<span class="fc" id="L108">        network.getTariffs().sort(Comparator.comparingDouble(TariffPrepaid::getMonthlyFee));</span>
+<span class="fc" id="L109">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
