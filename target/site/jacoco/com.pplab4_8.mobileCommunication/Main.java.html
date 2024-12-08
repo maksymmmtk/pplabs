@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication;
+
+import com.pplab4_8.mobileCommunication.commands.Command;
+import com.pplab4_8.mobileCommunication.menu.LoginMenu;
+import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
+import com.pplab4_8.mobileCommunication.tariffs.*;
+import com.pplab4_8.mobileCommunication.users.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.InputStream;
+import java.util.*;
+
+/**
+ * Головний клас програми для управління мобільними мережами та абонентами.
+ * Містить методи для ініціалізації мобільних мереж, тарифів та абонентів,
+ * а також для виконання додатку.
+ */
+<span class="nc" id="L19">public class Main {</span>
+
+    // Логер для запису логів
+<span class="fc" id="L22">    private static final Logger logger = LogManager.getLogger(Main.class);</span>
+
+    /**
+     * Точка входу в програму. Викликає метод {@link #executeApp(InputStream)} для запуску додатку.
+     *
+     * @param args вхідні аргументи командного рядка (не використовуються в даному випадку)
+     */
+    public static void main(String[] args) {
+<span class="nc" id="L30">        logger.fatal(&quot;Програма стартує...&quot;);</span>
+        // Викликаємо метод для виконання додатку
+<span class="nc" id="L32">        executeApp(System.in);</span>
+<span class="nc" id="L33">        logger.info(&quot;Програма завершила виконання.&quot;);</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     * Ініціалізує мобільні мережі, тарифи та абонентів, а також запускає меню входу.
+     *
+     * @param inputStream вхідний потік даних для сканера (зазвичай System.in)
+     */
+    public static void executeApp(InputStream inputStream) {
+<span class="fc" id="L42">        logger.info(&quot;Ініціалізація мобільних мереж, тарифів та абонентів...&quot;);</span>
+
+        // Ініціалізація мобільних мереж з тарифами
+<span class="fc" id="L45">        MobileNetwork kyivstar = new MobileNetwork(&quot;Kyivstar&quot;,</span>
+<span class="fc" id="L46">                new ArrayList&lt;&gt;(List.of(</span>
+                        new TariffPrepaid(&quot;Безлімітний&quot;, 120, 500, 150.0f),
+                        new TariffContract(&quot;Преміум Контракт&quot;, 150, 1000, 300.0f, &quot;Безкоштовний роумінг&quot;)
+                ))
+        );
+<span class="fc" id="L51">        logger.info(&quot;Мобільна мережа Kyivstar успішно ініціалізована.&quot;);</span>
+
+<span class="fc" id="L53">        MobileNetwork vodafone = new MobileNetwork(&quot;Vodafone&quot;,</span>
+<span class="fc" id="L54">                new ArrayList&lt;&gt;(List.of(</span>
+                        new TariffPrepaid(&quot;Максимальний&quot;, 110, 600, 200.0f),
+                        new TariffContract(&quot;Контракт Бізнес&quot;, 130, 1200, 350.0f, &quot;Пріоритетна підтримка&quot;)
+                ))
+        );
+<span class="fc" id="L59">        logger.info(&quot;Мобільна мережа Vodafone успішно ініціалізована.&quot;);</span>
+
+<span class="fc" id="L61">        MobileNetwork lifecell = new MobileNetwork(&quot;Lifecell&quot;,</span>
+<span class="fc" id="L62">                new ArrayList&lt;&gt;(List.of(</span>
+                        new TariffPrepaid(&quot;Зручний&quot;, 125, 400, 130.0f),
+                        new TariffContract(&quot;Сімейний Контракт&quot;, 160, 800, 250.0f, &quot;Додатковий номер безкоштовно&quot;)
+                ))
+        );
+<span class="fc" id="L67">        logger.info(&quot;Мобільна мережа Lifecell успішно ініціалізована.&quot;);</span>
+
+        // Ініціалізація сервісів для кожної мобільної мережі
+<span class="fc" id="L70">        MobileNetworkService kyivstarService = new MobileNetworkService(kyivstar);</span>
+<span class="fc" id="L71">        MobileNetworkService vodafoneService = new MobileNetworkService(vodafone);</span>
+<span class="fc" id="L72">        MobileNetworkService lifecellService = new MobileNetworkService(lifecell);</span>
+
+<span class="fc" id="L74">        logger.info(&quot;Сервіси мобільних мереж успішно створено.&quot;);</span>
+
+        // Ініціалізація абонентів з прив'язкою до мереж та тарифів
+<span class="fc" id="L77">        MobileSubscriber subscriber1 = new MobileSubscriber(&quot;Maksym&quot;, 30, &quot;0951234567&quot;, kyivstarService, kyivstar.getTariffByName(&quot;Безлімітний&quot;));</span>
+<span class="fc" id="L78">        MobileSubscriber subscriber2 = new MobileSubscriber(&quot;Olga&quot;, 25, &quot;0937654321&quot;, vodafoneService, vodafone.getTariffByName(&quot;Контракт Бізнес&quot;));</span>
+
+<span class="fc" id="L80">        logger.info(&quot;Абоненти успішно ініціалізовані.&quot;);</span>
+
+        // Карта для зберігання мобільних мереж з їхніми обліковими даними
+<span class="fc" id="L83">        Map&lt;Map&lt;String, String&gt;, MobileNetworkService&gt; services = Map.of(</span>
+<span class="fc" id="L84">                Map.of(&quot;kyivstar&quot;, &quot;1234&quot;), kyivstarService,</span>
+<span class="fc" id="L85">                Map.of(&quot;vodafone&quot;, &quot;5678&quot;), vodafoneService,</span>
+<span class="fc" id="L86">                Map.of(&quot;lifecell&quot;, &quot;91011&quot;), lifecellService</span>
+        );
+
+        // Карта для зберігання абонентів з їхніми обліковими даними
+<span class="fc" id="L90">        Map&lt;Map&lt;String, String&gt;, MobileSubscriber&gt; subscribers = Map.of(</span>
+<span class="fc" id="L91">                Map.of(&quot;maksym&quot;, &quot;password1&quot;), subscriber1,</span>
+<span class="fc" id="L92">                Map.of(&quot;olga&quot;, &quot;password2&quot;), subscriber2</span>
+        );
+
+<span class="fc" id="L95">        logger.info(&quot;Меню входу створюється...&quot;);</span>
+        // Створення і виконання меню входу
+<span class="fc" id="L97">        Command loginMenu = new LoginMenu(services, subscribers, inputStream);</span>
+<span class="fc" id="L98">        loginMenu.execute();</span>
+<span class="fc" id="L99">        logger.info(&quot;Меню входу успішно виконано.&quot;);</span>
+<span class="fc" id="L100">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

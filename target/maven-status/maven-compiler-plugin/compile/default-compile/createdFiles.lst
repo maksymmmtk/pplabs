@@ -1,0 +1,15 @@
+com\pplab4_8\mobileCommunication\tariffs\TariffContract.class
+com\pplab4_8\mobileCommunication\menu\LoginMenu.class
+com\pplab4_8\mobileCommunication\commands\ViewPersonalTariff.class
+com\pplab4_8\mobileCommunication\commands\SearchTariffsByRange.class
+com\pplab4_8\mobileCommunication\commands\ViewTariffs.class
+com\pplab4_8\mobileCommunication\tariffs\TariffPrepaid.class
+com\pplab4_8\mobileCommunication\commands\AddTariff.class
+com\pplab4_8\mobileCommunication\menu\MainMenu.class
+com\pplab4_8\mobileCommunication\commands\EditTariff.class
+com\pplab4_8\mobileCommunication\commands\RemoveTariff.class
+com\pplab4_8\mobileCommunication\commands\Command.class
+com\pplab4_8\mobileCommunication\service\MobileNetworkService.class
+com\pplab4_8\mobileCommunication\users\MobileSubscriber.class
+com\pplab4_8\mobileCommunication\Main.class
+com\pplab4_8\mobileCommunication\users\MobileNetwork.class

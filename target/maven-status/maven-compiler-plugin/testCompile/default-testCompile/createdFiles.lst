@@ -1,0 +1,17 @@
+com\pplab4_8\mobileCommunication\commands\CommandTest.class
+com\pplab4_8\mobileCommunication\commands\CommandTest$TestCommand.class
+com\pplab4_8\mobileCommunication\commands\ViewTariffsTest.class
+com\pplab4_8\mobileCommunication\commands\SearchTariffsByRangeTest.class
+com\pplab4_8\mobileCommunication\menu\MainMenuTest.class
+com\pplab4_8\mobileCommunication\commands\ViewPersonalTariffTest.class
+com\pplab4_8\mobileCommunication\menu\LoginMenuTest.class
+com\pplab4_8\mobileCommunication\service\MobileNetworkServiceTest.class
+com\pplab4_8\mobileCommunication\commands\RemoveTariffTest.class
+com\pplab4_8\mobileCommunication\MainTest.class
+com\pplab4_8\mobileCommunication\tariffs\TariffContractTest.class
+com\pplab4_8\mobileCommunication\commands\EditTariffTest.class
+com\pplab4_8\mobileCommunication\commands\AddTariffTest.class
+com\pplab4_8\mobileCommunication\users\MobileSubscriberTest.class
+com\pplab4_8\mobileCommunication\tariffs\TariffPrepaidTest.class
+com\pplab4_8\mobileCommunication\menu\MainMenuTest$DummyCommand.class
+com\pplab4_8\mobileCommunication\users\MobileNetworkTest.class

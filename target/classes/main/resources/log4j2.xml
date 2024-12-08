@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Лог-файл -->
+        <File name="FileLogger" fileName="logs/app.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+        </File>
+
+        <!-- Консольний логер -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+        </Console>
+
+        <!-- Email для критичних помилок -->
+        <SMTP name="Email" subject="Log Error Notification"
+              to="maksymmomotok1@gmail.com"
+              from="maksymmomotok1@gmail.com"
+              smtpHost="smtp.gmail.com"
+              smtpPort="587"
+              smtpUsername="maksymmomotok1@gmail.com"
+              smtpPassword="husd hzhe lxfw ozma"
+              bufferSize="512"
+              smtpProtocol="smtp">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n</Pattern>
+            </PatternLayout>
+        </SMTP>
+    </Appenders>
+
+    <Loggers>
+        <!-- Кореневий логер -->
+        <Root level="info">
+            <AppenderRef ref="FileLogger"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Email"/>
+        </Root>
+    </Loggers>
+</Configuration>
