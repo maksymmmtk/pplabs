@@ -3,6 +3,8 @@
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
 import com.pplab4_8.mobileCommunication.users.MobileSubscriber;
 import com.pplab4_8.mobileCommunication.tariffs.TariffPrepaid;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ import java.util.Scanner;
  * Після знаходження тарифу пропонує користувачеві підключити його.
  */
 public class SearchTariffsByRange implements Command {
+<span class="fc" id="L16">    private static final Logger logger = LogManager.getLogger(SearchTariffsByRange.class);</span>
     private final MobileSubscriber subscriber;
     private final MobileNetworkService service;
 
@@ -20,10 +23,10 @@ public class SearchTariffsByRange implements Command {
      * @param subscriber абонент, який виконує пошук і може підключити знайдений тариф.
      * @param service    сервіс мобільної мережі для пошуку тарифів.
      */
-<span class="fc" id="L23">    public SearchTariffsByRange(MobileSubscriber subscriber, MobileNetworkService service) {</span>
-<span class="fc" id="L24">        this.subscriber = subscriber;</span>
-<span class="fc" id="L25">        this.service = service;</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L26">    public SearchTariffsByRange(MobileSubscriber subscriber, MobileNetworkService service) {</span>
+<span class="fc" id="L27">        this.subscriber = subscriber;</span>
+<span class="fc" id="L28">        this.service = service;</span>
+<span class="fc" id="L29">    }</span>
 
     /**
      * Виконує пошук тарифу в заданому діапазоні абонплати.
@@ -31,34 +34,49 @@ public class SearchTariffsByRange implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L34">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L37">        logger.info(&quot;Початок виконання команди 'Знайти тариф'.&quot;);</span>
 
-<span class="fc" id="L36">        System.out.print(&quot;\nВведіть мінімальну абонплату: &quot;);</span>
-<span class="fc" id="L37">        float minFee = scanner.nextFloat();</span>
-<span class="fc" id="L38">        System.out.print(&quot;Введіть максимальну абонплату: &quot;);</span>
-<span class="fc" id="L39">        float maxFee = scanner.nextFloat();</span>
+<span class="fc" id="L39">        Scanner scanner = new Scanner(System.in);</span>
 
-        // Пошук тарифу у вказаному діапазоні
-<span class="fc" id="L42">        TariffPrepaid foundTariff = service.searchTariffsByRange(minFee, maxFee);</span>
+        try {
+<span class="fc" id="L42">            System.out.print(&quot;\nВведіть мінімальну абонплату: &quot;);</span>
+<span class="fc" id="L43">            float minFee = scanner.nextFloat();</span>
+<span class="fc" id="L44">            logger.info(&quot;Користувач ввів мінімальну абонплату: {}&quot;, minFee);</span>
 
-<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (foundTariff == null) {</span>
-<span class="fc" id="L45">            System.out.println(&quot;Тариф у заданому діапазоні не знайдено.&quot;);</span>
-<span class="fc" id="L46">            return;</span>
+<span class="fc" id="L46">            System.out.print(&quot;Введіть максимальну абонплату: &quot;);</span>
+<span class="fc" id="L47">            float maxFee = scanner.nextFloat();</span>
+<span class="fc" id="L48">            logger.info(&quot;Користувач ввів максимальну абонплату: {}&quot;, maxFee);</span>
+
+            // Пошук тарифу у вказаному діапазоні
+<span class="fc" id="L51">            TariffPrepaid foundTariff = service.searchTariffsByRange(minFee, maxFee);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (foundTariff == null) {</span>
+<span class="fc" id="L53">                logger.warn(&quot;Тариф у заданому діапазоні не знайдено. Мін. абонплата: {}, Макс. абонплата: {}&quot;, minFee, maxFee);</span>
+<span class="fc" id="L54">                System.out.println(&quot;Тариф у заданому діапазоні не знайдено.&quot;);</span>
+<span class="fc" id="L55">                return;</span>
+            }
+
+<span class="fc" id="L58">            logger.info(&quot;Знайдено тариф: {}&quot;, foundTariff);</span>
+<span class="fc" id="L59">            System.out.println(&quot;Знайдено тариф:&quot;);</span>
+<span class="fc" id="L60">            System.out.println(foundTariff);</span>
+
+            // Пропозиція підключити знайдений тариф
+<span class="fc" id="L63">            System.out.print(&quot;Підключити цей тариф? (1 - так, 2 - ні): &quot;);</span>
+<span class="fc" id="L64">            int choice = scanner.nextInt();</span>
+
+<span class="fc bfc" id="L66" title="All 2 branches covered.">            if (choice == 1) {</span>
+<span class="fc" id="L67">                subscriber.setTariff(foundTariff);</span>
+<span class="fc" id="L68">                logger.info(&quot;Користувач підключив тариф: {}&quot;, foundTariff);</span>
+<span class="fc" id="L69">                System.out.println(&quot;Тариф успішно підключено.&quot;);</span>
+            } else {
+<span class="fc" id="L71">                logger.info(&quot;Користувач відмовився від підключення тарифу.&quot;);</span>
+<span class="fc" id="L72">                System.out.println(&quot;Тариф не змінено.&quot;);</span>
+            }
+<span class="fc" id="L74">        } catch (Exception e) {</span>
+<span class="fc" id="L75">            logger.error(&quot;Виникла помилка під час виконання команди 'Знайти тариф'.&quot;, e);</span>
+        } finally {
+<span class="fc" id="L77">            logger.info(&quot;Завершення виконання команди 'Знайти тариф'.&quot;);</span>
         }
-
-<span class="fc" id="L49">        System.out.println(&quot;Знайдено тариф:&quot;);</span>
-<span class="fc" id="L50">        System.out.println(foundTariff);</span>
-
-        // Пропозиція підключити знайдений тариф
-<span class="fc" id="L53">        System.out.print(&quot;Підключити цей тариф? (1 - так, 2 - ні): &quot;);</span>
-<span class="fc" id="L54">        int choice = scanner.nextInt();</span>
-<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (choice == 1) {</span>
-<span class="fc" id="L56">            subscriber.setTariff(foundTariff);</span>
-<span class="fc" id="L57">            System.out.println(&quot;Тариф успішно підключено.&quot;);</span>
-        } else {
-<span class="fc" id="L59">            System.out.println(&quot;Тариф не змінено.&quot;);</span>
-        }
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L79">    }</span>
 
     /**
      * Отримує назву команди.
@@ -67,7 +85,7 @@ public class SearchTariffsByRange implements Command {
      */
     @Override
     public String getName() {
-<span class="fc" id="L70">        return &quot;Знайти тариф&quot;;</span>
+<span class="fc" id="L88">        return &quot;Знайти тариф&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

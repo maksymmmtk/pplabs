@@ -2,97 +2,121 @@
 
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
 import com.pplab4_8.mobileCommunication.tariffs.TariffPrepaid;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MobileSubscriber {
+
+<span class="fc" id="L10">    private static final Logger logger = LogManager.getLogger(MobileSubscriber.class);</span>
+
     private String name;
     private int age;
     private String phoneNumber;
     private MobileNetworkService service;
     private TariffPrepaid tariff;
-<span class="fc" id="L12">    private boolean silentMode = false;</span>
+<span class="fc" id="L17">    private boolean silentMode = false;</span>
 
-<span class="fc" id="L14">    public MobileSubscriber(String name, int age) {</span>
-<span class="fc" id="L15">        this.name = name;</span>
-<span class="fc" id="L16">        this.age = age;</span>
-<span class="fc" id="L17">    }</span>
-
-<span class="fc" id="L19">    public MobileSubscriber(String name, int age, String phoneNumber, MobileNetworkService network, TariffPrepaid tariff) {</span>
+<span class="fc" id="L19">    public MobileSubscriber(String name, int age) {</span>
 <span class="fc" id="L20">        this.name = name;</span>
 <span class="fc" id="L21">        this.age = age;</span>
-<span class="fc" id="L22">        this.phoneNumber = phoneNumber;</span>
-<span class="fc" id="L23">        this.service = service;</span>
-<span class="fc" id="L24">        this.tariff = tariff;</span>
-<span class="fc" id="L25">        this.tariff.addSubscriber();</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L22">        logger.info(&quot;Створено нового абонента: ім'я = '{}', вік = {}&quot;, name, age);</span>
+<span class="fc" id="L23">    }</span>
+
+<span class="fc" id="L25">    public MobileSubscriber(String name, int age, String phoneNumber, MobileNetworkService service, TariffPrepaid tariff) {</span>
+<span class="fc" id="L26">        this.name = name;</span>
+<span class="fc" id="L27">        this.age = age;</span>
+<span class="fc" id="L28">        this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L29">        this.service = service;</span>
+<span class="fc" id="L30">        this.tariff = tariff;</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (this.tariff != null) {</span>
+<span class="fc" id="L32">            this.tariff.addSubscriber();</span>
+        }
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        logger.info(&quot;Створено нового абонента: ім'я = '{}', вік = {}, номер = '{}', тариф = '{}'&quot;, name, age, phoneNumber, tariff != null ? tariff.getName() : &quot;не встановлено&quot;);</span>
+<span class="fc" id="L35">    }</span>
 
     public String getName() {
-<span class="fc" id="L29">        return name;</span>
+<span class="fc" id="L38">        logger.debug(&quot;Отримано ім'я абонента: '{}'&quot;, name);</span>
+<span class="fc" id="L39">        return name;</span>
     }
 
     public int getAge() {
-<span class="fc" id="L33">        return age;</span>
+<span class="fc" id="L43">        logger.debug(&quot;Отримано вік абонента '{}': {}&quot;, name, age);</span>
+<span class="fc" id="L44">        return age;</span>
     }
 
     public String getPhoneNumber() {
-<span class="fc" id="L37">        return phoneNumber;</span>
+<span class="fc" id="L48">        logger.debug(&quot;Отримано номер телефону абонента '{}': {}&quot;, name, phoneNumber);</span>
+<span class="fc" id="L49">        return phoneNumber;</span>
     }
 
     public MobileNetworkService getNetworkService() {
-<span class="nc" id="L41">        return service;</span>
+<span class="nc" id="L53">        logger.debug(&quot;Отримано сервіс мережі для абонента '{}'&quot;, name);</span>
+<span class="nc" id="L54">        return service;</span>
     }
 
     public TariffPrepaid getTariff() {
-<span class="fc" id="L45">        return tariff;</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        logger.debug(&quot;Отримано тариф абонента '{}': {}&quot;, name, tariff != null ? tariff.getName() : &quot;не встановлено&quot;);</span>
+<span class="fc" id="L59">        return tariff;</span>
     }
 
     public void setName(String name) {
-<span class="fc" id="L49">        this.name = name;</span>
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L63">        logger.info(&quot;Змінено ім'я абонента з '{}' на '{}'&quot;, this.name, name);</span>
+<span class="fc" id="L64">        this.name = name;</span>
+<span class="fc" id="L65">    }</span>
 
     public void setAge(int age) {
-<span class="fc" id="L53">        this.age = age;</span>
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L68">        logger.info(&quot;Змінено вік абонента '{}': з {} на {}&quot;, this.name, this.age, age);</span>
+<span class="fc" id="L69">        this.age = age;</span>
+<span class="fc" id="L70">    }</span>
 
     public void setPhoneNumber(String phoneNumber) {
-<span class="fc" id="L57">        this.phoneNumber = phoneNumber;</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L73">        logger.info(&quot;Змінено номер телефону абонента '{}': з '{}' на '{}'&quot;, this.name, this.phoneNumber, phoneNumber);</span>
+<span class="fc" id="L74">        this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L75">    }</span>
 
     public void setNetworkService(MobileNetworkService service) {
-<span class="nc" id="L61">        this.service = service;</span>
-<span class="nc" id="L62">    }</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        logger.info(&quot;Змінено мережевий сервіс абонента '{}': нова мережа = '{}'&quot;, this.name, service != null ? service.getNetwork().getName() : &quot;null&quot;);</span>
+<span class="nc" id="L79">        this.service = service;</span>
+<span class="nc" id="L80">    }</span>
 
     public void setSilentMode(boolean silentMode) {
-<span class="fc" id="L65">        this.silentMode = silentMode;</span>
-<span class="fc" id="L66">    }</span>
+<span class="fc" id="L83">        logger.info(&quot;Режим тихого режиму для абонента '{}' змінено на '{}'&quot;, name, silentMode);</span>
+<span class="fc" id="L84">        this.silentMode = silentMode;</span>
+<span class="fc" id="L85">    }</span>
 
     public void setTariff(TariffPrepaid newTariff) {
-<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (newTariff == null) {</span>
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">            if (!silentMode) {</span>
-<span class="fc" id="L71">                System.out.println(&quot;Новий тариф не може бути null.&quot;);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (newTariff == null) {</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            if (!silentMode) {</span>
+<span class="fc" id="L90">                System.out.println(&quot;Новий тариф не може бути null.&quot;);</span>
             }
-<span class="fc" id="L73">            this.tariff = null;</span>
-<span class="fc" id="L74">            return;</span>
+<span class="fc" id="L92">            logger.warn(&quot;Спроба встановити тариф 'null' для абонента '{}'&quot;, name);</span>
+<span class="fc" id="L93">            this.tariff = null;</span>
+<span class="fc" id="L94">            return;</span>
         }
 
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        if (this.tariff != null) {</span>
-<span class="fc" id="L78">            this.tariff.subSubscriber();</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        if (this.tariff != null) {</span>
+<span class="fc" id="L98">            logger.info(&quot;Абонент '{}' скасував тариф '{}'&quot;, name, this.tariff.getName());</span>
+<span class="fc" id="L99">            this.tariff.subSubscriber();</span>
         }
 
-<span class="fc" id="L81">        this.tariff = newTariff;</span>
-<span class="fc" id="L82">        this.tariff.addSubscriber();</span>
+<span class="fc" id="L102">        this.tariff = newTariff;</span>
+<span class="fc" id="L103">        this.tariff.addSubscriber();</span>
+<span class="fc" id="L104">        logger.info(&quot;Абонент '{}' змінив тариф на '{}'&quot;, name, newTariff.getName());</span>
 
-<span class="fc bfc" id="L84" title="All 2 branches covered.">        if (!silentMode) {</span>
-<span class="fc" id="L85">            System.out.println(&quot;Новий тариф успішно встановлено: &quot; + newTariff.getName());</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        if (!silentMode) {</span>
+<span class="fc" id="L107">            System.out.println(&quot;Новий тариф успішно встановлено: &quot; + newTariff.getName());</span>
         }
-<span class="fc" id="L87">    }</span>
+<span class="fc" id="L109">    }</span>
 
     public void viewPersonalTariff() {
-<span class="fc bfc" id="L90" title="All 2 branches covered.">        if (tariff == null) {</span>
-<span class="fc" id="L91">            System.out.println(&quot;Тариф не встановлено.&quot;);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">        if (tariff == null) {</span>
+<span class="fc" id="L113">            logger.info(&quot;Абонент '{}' переглянув тариф: тариф не встановлено.&quot;, name);</span>
+<span class="fc" id="L114">            System.out.println(&quot;Тариф не встановлено.&quot;);</span>
         } else {
-<span class="fc" id="L93">            System.out.print(&quot;Ваш тариф:\n&quot;);</span>
-<span class="fc" id="L94">            System.out.println(tariff);</span>
+<span class="fc" id="L116">            logger.info(&quot;Абонент '{}' переглянув свій тариф: '{}'&quot;, name, tariff.getName());</span>
+<span class="fc" id="L117">            System.out.print(&quot;Ваш тариф:\n&quot;);</span>
+<span class="fc" id="L118">            System.out.println(tariff);</span>
         }
-<span class="fc" id="L96">    }</span>
+<span class="fc" id="L120">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -2,6 +2,8 @@
 
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
 import com.pplab4_8.mobileCommunication.tariffs.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -10,6 +12,7 @@ import java.util.Scanner;
  * Дозволяє змінювати назву, абонплату, кількість хвилин, гігабайтів і додаткові послуги тарифу.
  */
 public class EditTariff implements Command {
+<span class="fc" id="L15">    private static final Logger logger = LogManager.getLogger(EditTariff.class);</span>
     private MobileNetworkService service;
 
     /**
@@ -17,9 +20,9 @@ public class EditTariff implements Command {
      *
      * @param service сервіс мобільної мережі, в якому редагуються тарифи.
      */
-<span class="fc" id="L20">    public EditTariff(MobileNetworkService service) {</span>
-<span class="fc" id="L21">        this.service = service;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L23">    public EditTariff(MobileNetworkService service) {</span>
+<span class="fc" id="L24">        this.service = service;</span>
+<span class="fc" id="L25">    }</span>
 
     /**
      * Виконує редагування існуючого тарифу.
@@ -27,107 +30,104 @@ public class EditTariff implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L30">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L33">        logger.info(&quot;Початок виконання команди 'Редагувати тариф'.&quot;);</span>
+<span class="fc" id="L34">        Scanner scanner = new Scanner(System.in);</span>
 
         try {
-<span class="fc" id="L33">            System.out.print(&quot;\nВведіть назву тарифу для редагування: &quot;);</span>
-<span class="pc bpc" id="L34" title="1 of 2 branches missed.">            if (!scanner.hasNextLine()) {</span>
-<span class="nc" id="L35">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
-<span class="nc" id="L36">                return;</span>
+<span class="fc" id="L37">            System.out.print(&quot;\nВведіть назву тарифу для редагування: &quot;);</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (!scanner.hasNextLine()) {</span>
+<span class="nc" id="L39">                logger.warn(&quot;Користувач не ввів назву тарифу.&quot;);</span>
+<span class="nc" id="L40">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
+<span class="nc" id="L41">                return;</span>
             }
-<span class="fc" id="L38">            String name = scanner.nextLine();</span>
-<span class="fc" id="L39">            TariffPrepaid oldTariff = service.searchTariffByName(name);</span>
+<span class="fc" id="L43">            String name = scanner.nextLine();</span>
+<span class="fc" id="L44">            logger.info(&quot;Користувач ввів назву тарифу для редагування: '{}'&quot;, name);</span>
 
-<span class="fc bfc" id="L41" title="All 2 branches covered.">            if (oldTariff == null) {</span>
-<span class="fc" id="L42">                System.out.println(&quot;Тариф не знайдено.&quot;);</span>
-<span class="fc" id="L43">                return;</span>
+<span class="fc" id="L46">            TariffPrepaid oldTariff = service.searchTariffByName(name);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if (oldTariff == null) {</span>
+<span class="fc" id="L48">                logger.warn(&quot;Тариф з назвою '{}' не знайдено.&quot;, name);</span>
+<span class="fc" id="L49">                System.out.println(&quot;Тариф не знайдено.&quot;);</span>
+<span class="fc" id="L50">                return;</span>
             }
 
-<span class="fc" id="L46">            System.out.print(&quot;Введіть нову назву (або залиште порожнім): &quot;);</span>
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            String newName = scanner.hasNextLine() ? scanner.nextLine() : &quot;&quot;;</span>
-<span class="fc bfc" id="L48" title="All 2 branches covered.">            if (newName.isEmpty()) newName = oldTariff.getName();</span>
+<span class="fc" id="L53">            logger.info(&quot;Редагування тарифу: {}&quot;, oldTariff);</span>
 
-<span class="fc" id="L50">            float newFee = getValidFloat(scanner, &quot;Введіть нову абонплату (або залиште 0): &quot;, oldTariff.getMonthlyFee());</span>
-<span class="fc" id="L51">            int newMinutes = getValidInt(scanner, &quot;Введіть нову кількість хвилин (або залиште 0): &quot;, oldTariff.getCallMinutesCount());</span>
-<span class="fc" id="L52">            float newGigabytes = getValidFloat(scanner, &quot;Введіть нову кількість гігабайт (або залиште 0): &quot;, oldTariff.getInternetGigabytesCount());</span>
+<span class="fc" id="L55">            System.out.print(&quot;Введіть нову назву (або залиште порожнім): &quot;);</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            String newName = scanner.hasNextLine() ? scanner.nextLine() : &quot;&quot;;</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if (newName.isEmpty()) newName = oldTariff.getName();</span>
+<span class="fc" id="L58">            logger.info(&quot;Встановлено нову назву тарифу: '{}'&quot;, newName);</span>
+
+<span class="fc" id="L60">            float newFee = getValidFloat(scanner, &quot;Введіть нову абонплату (або залиште 0): &quot;, oldTariff.getMonthlyFee());</span>
+<span class="fc" id="L61">            logger.info(&quot;Встановлено нову абонплату: {}&quot;, newFee);</span>
+
+<span class="fc" id="L63">            int newMinutes = getValidInt(scanner, &quot;Введіть нову кількість хвилин (або залиште 0): &quot;, oldTariff.getCallMinutesCount());</span>
+<span class="fc" id="L64">            logger.info(&quot;Встановлено нову кількість хвилин: {}&quot;, newMinutes);</span>
+
+<span class="fc" id="L66">            float newGigabytes = getValidFloat(scanner, &quot;Введіть нову кількість гігабайт (або залиште 0): &quot;, oldTariff.getInternetGigabytesCount());</span>
+<span class="fc" id="L67">            logger.info(&quot;Встановлено нову кількість гігабайт: {}&quot;, newGigabytes);</span>
 
             TariffPrepaid updatedTariff;
-<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (oldTariff instanceof TariffContract contract) {</span>
-<span class="fc" id="L56">                System.out.print(&quot;Введіть нові додаткові послуги (або залиште порожнім): &quot;);</span>
-<span class="pc bpc" id="L57" title="1 of 2 branches missed.">                String newServices = scanner.hasNextLine() ? scanner.nextLine() : &quot;&quot;;</span>
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">                if (newServices.isEmpty()) newServices = contract.getAdditionalServices();</span>
-
-<span class="fc" id="L60">                updatedTariff = new TariffContract(newName, newFee, newMinutes, newGigabytes, newServices);</span>
-<span class="fc" id="L61">            } else {</span>
-<span class="fc" id="L62">                updatedTariff = new TariffPrepaid(newName, newFee, newMinutes, newGigabytes);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            if (oldTariff instanceof TariffContract contract) {</span>
+<span class="fc" id="L71">                System.out.print(&quot;Введіть нові додаткові послуги (або залиште порожнім): &quot;);</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">                String newServices = scanner.hasNextLine() ? scanner.nextLine() : &quot;&quot;;</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">                if (newServices.isEmpty()) newServices = contract.getAdditionalServices();</span>
+<span class="fc" id="L74">                updatedTariff = new TariffContract(newName, newFee, newMinutes, newGigabytes, newServices);</span>
+<span class="fc" id="L75">                logger.info(&quot;Встановлено нові додаткові послуги: {}&quot;, newServices);</span>
+<span class="fc" id="L76">            } else {</span>
+<span class="fc" id="L77">                updatedTariff = new TariffPrepaid(newName, newFee, newMinutes, newGigabytes);</span>
             }
 
-<span class="fc" id="L65">            service.editTariff(oldTariff, updatedTariff);</span>
-<span class="fc" id="L66">            System.out.println(&quot;Тариф успішно оновлено.&quot;);</span>
+<span class="fc" id="L80">            service.editTariff(oldTariff, updatedTariff);</span>
+<span class="fc" id="L81">            logger.info(&quot;Тариф успішно оновлено: {}&quot;, updatedTariff);</span>
+<span class="fc" id="L82">            System.out.println(&quot;Тариф успішно оновлено.&quot;);</span>
+<span class="nc" id="L83">        } catch (Exception e) {</span>
+<span class="nc" id="L84">            logger.error(&quot;Виникла помилка під час виконання команди 'Редагувати тариф'.&quot;, e);</span>
         } finally {
-<span class="fc" id="L68">            scanner.close();</span>
+<span class="fc" id="L86">            scanner.close();</span>
+<span class="fc" id="L87">            logger.info(&quot;Завершення виконання команди 'Редагувати тариф'.&quot;);</span>
         }
-<span class="fc" id="L70">    }</span>
+<span class="fc" id="L89">    }</span>
 
-    /**
-     * Отримує дійсне число з введення користувача або повертає значення за замовчуванням.
-     *
-     * @param scanner      об'єкт Scanner для читання введення.
-     * @param message      повідомлення для користувача.
-     * @param defaultValue значення за замовчуванням.
-     * @return введене дійсне число або значення за замовчуванням.
-     */
     private float getValidFloat(Scanner scanner, String message, float defaultValue) {
         while (true) {
-<span class="fc" id="L82">            System.out.print(message);</span>
-<span class="fc bfc" id="L83" title="All 2 branches covered.">            if (!scanner.hasNextLine()) {</span>
-<span class="fc" id="L84">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
-<span class="fc" id="L85">                return defaultValue;</span>
+<span class="fc" id="L93">            System.out.print(message);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">            if (!scanner.hasNextLine()) {</span>
+<span class="fc" id="L95">                logger.warn(&quot;Користувач не ввів дійсне число.&quot;);</span>
+<span class="fc" id="L96">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
+<span class="fc" id="L97">                return defaultValue;</span>
             }
-<span class="fc" id="L87">            String input = scanner.nextLine();</span>
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">            if (input.isEmpty()) return defaultValue;</span>
+<span class="fc" id="L99">            String input = scanner.nextLine();</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">            if (input.isEmpty()) return defaultValue;</span>
             try {
-<span class="fc" id="L90">                float value = Float.parseFloat(input);</span>
-
-<span class="fc bfc" id="L92" title="All 2 branches covered.">                return value == 0 ? defaultValue : value;</span>
-<span class="fc" id="L93">            } catch (NumberFormatException e) {</span>
-<span class="fc" id="L94">                System.out.println(&quot;Помилка: введіть дійсне число.&quot;);</span>
+<span class="fc" id="L102">                float value = Float.parseFloat(input);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">                return value == 0 ? defaultValue : value;</span>
+<span class="fc" id="L104">            } catch (NumberFormatException e) {</span>
+<span class="fc" id="L105">                logger.warn(&quot;Помилка перетворення '{}', очікувалося дійсне число.&quot;, input);</span>
+<span class="fc" id="L106">                System.out.println(&quot;Помилка: введіть дійсне число.&quot;);</span>
             }
-<span class="fc" id="L96">        }</span>
+<span class="fc" id="L108">        }</span>
     }
 
-    /**
-     * Отримує ціле число з введення користувача або повертає значення за замовчуванням.
-     *
-     * @param scanner      об'єкт Scanner для читання введення.
-     * @param message      повідомлення для користувача.
-     * @param defaultValue значення за замовчуванням.
-     * @return введене ціле число або значення за замовчуванням.
-     */
     private int getValidInt(Scanner scanner, String message, int defaultValue) {
         while (true) {
-<span class="fc" id="L109">            System.out.print(message);</span>
-<span class="pc bpc" id="L110" title="1 of 2 branches missed.">            if (!scanner.hasNextLine()) {</span>
-<span class="nc" id="L111">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
-<span class="nc" id="L112">                return defaultValue;</span>
+<span class="fc" id="L113">            System.out.print(message);</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">            if (!scanner.hasNextLine()) {</span>
+<span class="nc" id="L115">                logger.warn(&quot;Користувач не ввів ціле число.&quot;);</span>
+<span class="nc" id="L116">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
+<span class="nc" id="L117">                return defaultValue;</span>
             }
-<span class="fc" id="L114">            String input = scanner.nextLine();</span>
-<span class="pc bpc" id="L115" title="1 of 2 branches missed.">            if (input.isEmpty()) return defaultValue;</span>
+<span class="fc" id="L119">            String input = scanner.nextLine();</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">            if (input.isEmpty()) return defaultValue;</span>
             try {
-<span class="fc" id="L117">                int value = Integer.parseInt(input);</span>
-
-<span class="fc bfc" id="L119" title="All 2 branches covered.">                return value == 0 ? defaultValue : value;</span>
-<span class="fc" id="L120">            } catch (NumberFormatException e) {</span>
-<span class="fc" id="L121">                System.out.println(&quot;Помилка: введіть ціле число.&quot;);</span>
+<span class="fc" id="L122">                int value = Integer.parseInt(input);</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">                return value == 0 ? defaultValue : value;</span>
+<span class="fc" id="L124">            } catch (NumberFormatException e) {</span>
+<span class="fc" id="L125">                logger.warn(&quot;Помилка перетворення '{}', очікувалося ціле число.&quot;, input);</span>
+<span class="fc" id="L126">                System.out.println(&quot;Помилка: введіть ціле число.&quot;);</span>
             }
-<span class="fc" id="L123">        }</span>
+<span class="fc" id="L128">        }</span>
     }
 
-    /**
-     * Отримує назву команди.
-     *
-     * @return назва команди.
-     */
     @Override
     public String getName() {
 <span class="fc" id="L133">        return &quot;Редагувати тариф&quot;;</span>

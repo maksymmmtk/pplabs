@@ -1,42 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Основний файл конфігурації Maven для проєкту -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Версія моделі POM -->
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Ідентифікація проекту -->
+    <!-- Ідентифікатор групи (package-like структура для проєкту) -->
     <groupId>com.pplab4_8</groupId>
+
+    <!-- Ідентифікатор артефакту (назва проєкту) -->
     <artifactId>pp4-8</artifactId>
+
+    <!-- Версія проєкту -->
     <version>1.0-SNAPSHOT</version>
+
+    <!-- Тип пакування (jar, war тощо) -->
     <packaging>jar</packaging>
+
+    <!-- Назва проєкту -->
     <name>pp4-8</name>
 
-    <!-- Основні властивості проекту -->
+    <!-- Властивості проєкту -->
     <properties>
+        <!-- Кодування вихідного коду -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Версія Java для компіляції -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-    <!-- Залежності -->
+    <!-- Залежності проєкту -->
     <dependencies>
-        <!-- JUnit 5 (Jupiter) dependency -->
+        <!-- JUnit для модульного тестування -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.2</version> <!-- Актуальна версія на момент 2024 -->
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.8.2</version> <!-- Актуальна версія на момент 2024 -->
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Mockito для тестування -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.5.0</version> <!-- Використовуйте актуальну версію -->
+            <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -46,30 +61,35 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Логування -->
+        <!-- Log4j для логування -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version> <!-- Вказати актуальну версію -->
+            <version>2.20.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.20.0</version> <!-- Вказати актуальну версію -->
+            <version>2.20.0</version>
         </dependency>
+
+        <!-- JavaMail для роботи з електронною поштою -->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-            <version>1.4.7</version> <!-- Стара, стабільна версія -->
+            <version>1.4.7</version>
         </dependency>
-
-        <!-- Інші залежності додайте тут -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
-    <!-- Налаштування плагінів -->
+    <!-- Налаштування збірки -->
     <build>
         <plugins>
-            <!-- Плагін для компіляції -->
+            <!-- Плагін для компіляції коду -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -80,19 +100,20 @@
                 </configuration>
             </plugin>
 
-            <!-- Плагін для тестування -->
+            <!-- Плагін для запуску тестів -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
             </plugin>
 
-            <!-- JaCoCo плагін для перевірки покриття тестами -->
+            <!-- Jacoco для збору звітів про покриття тестами -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
                 <executions>
+                    <!-- Додати агент для збору даних -->
                     <execution>
                         <id>prepare-agent</id>
                         <phase>test-compile</phase>
@@ -100,6 +121,7 @@
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <!-- Генерація звіту -->
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>

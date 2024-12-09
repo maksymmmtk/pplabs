@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ViewPersonalTariff.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.commands</a> &gt; <span class="el_source">ViewPersonalTariff.java</span></div><h1>ViewPersonalTariff.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.commands;
 
 import com.pplab4_8.mobileCommunication.users.MobileSubscriber;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Команда для перегляду особистого тарифу абонента.
  */
 public class ViewPersonalTariff implements Command {
 
+<span class="fc" id="L12">    private static final Logger logger = LogManager.getLogger(ViewPersonalTariff.class);</span>
     private MobileSubscriber subscriber;
 
     /**
@@ -14,9 +17,9 @@ public class ViewPersonalTariff implements Command {
      *
      * @param subscriber абонент, чий особистий тариф буде переглянуто.
      */
-<span class="fc" id="L17">    public ViewPersonalTariff(MobileSubscriber subscriber) {</span>
-<span class="fc" id="L18">        this.subscriber = subscriber;</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L20">    public ViewPersonalTariff(MobileSubscriber subscriber) {</span>
+<span class="fc" id="L21">        this.subscriber = subscriber;</span>
+<span class="fc" id="L22">    }</span>
 
     /**
      * Виконує команду перегляду особистого тарифу.
@@ -24,8 +27,13 @@ public class ViewPersonalTariff implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L27">        subscriber.viewPersonalTariff();</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L30">        logger.info(&quot;Початок виконання команди 'Переглянути особистий тариф' для абонента: {}&quot;, subscriber.getName());</span>
+
+        // Виклик методу для перегляду тарифу
+<span class="fc" id="L33">        subscriber.viewPersonalTariff();</span>
+
+<span class="fc" id="L35">        logger.info(&quot;Завершення виконання команди 'Переглянути особистий тариф' для абонента: {}&quot;, subscriber.getName());</span>
+<span class="fc" id="L36">    }</span>
 
     /**
      * Отримує назву команди.
@@ -34,7 +42,7 @@ public class ViewPersonalTariff implements Command {
      */
     @Override
     public String getName() {
-<span class="fc" id="L37">        return &quot;Переглянути особистий тариф&quot;;</span>
+<span class="fc" id="L45">        return &quot;Переглянути особистий тариф&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

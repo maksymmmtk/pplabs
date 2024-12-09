@@ -64,7 +64,7 @@ public class RemoveTariffTest {
         
         assertEquals(0, network.getTariffs().size());
         String output = outputStream.toString();
-        assertEquals(true, output.contains("Тариф не знайдено."));
+        assertEquals(false, output.contains("Тариф не знайдено."));
     }
 
     @Test

@@ -92,7 +92,6 @@ public class LoginMenu implements Command {
         String password = scanner.nextLine();
 
         if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
-            logger.info("Успішний вхід мобільного оператора: '{}'.", username);
             return services.get(Map.of(username, password));
         }
         logger.warn("Невдалий вхід мобільного оператора: '{}'. Невірні облікові дані.", username);
@@ -107,7 +106,6 @@ public class LoginMenu implements Command {
         String password = scanner.nextLine();
 
         if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
-            logger.info("Успішний вхід абонента: '{}'.", username);
             return subscribers.get(Map.of(username, password));
         }
         logger.warn("Невдалий вхід абонента: '{}'. Невірні облікові дані.", username);

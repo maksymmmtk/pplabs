@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AddTariff.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.commands</a> &gt; <span class="el_source">AddTariff.java</span></div><h1>AddTariff.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.commands;
 
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
-import com.pplab4_8.mobileCommunication.tariffs.*;
+import com.pplab4_8.mobileCommunication.tariffs.TariffContract;
+import com.pplab4_8.mobileCommunication.tariffs.TariffPrepaid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -10,6 +14,8 @@ import java.util.Scanner;
  * Дозволяє додавати передплачені та контрактні тарифи через консольний ввід.
  */
 public class AddTariff implements Command {
+<span class="fc" id="L17">    private static final Logger logger = LogManager.getLogger(AddTariff.class);</span>
+
     private MobileNetworkService service;
 
     /**
@@ -17,9 +23,10 @@ public class AddTariff implements Command {
      *
      * @param service сервіс мобільної мережі, в який будуть додаватися тарифи.
      */
-<span class="fc" id="L20">    public AddTariff(MobileNetworkService service) {</span>
-<span class="fc" id="L21">        this.service = service;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L26">    public AddTariff(MobileNetworkService service) {</span>
+<span class="fc" id="L27">        this.service = service;</span>
+<span class="fc" id="L28">        logger.info(&quot;Ініціалізовано команду 'Додати тариф' для мережі '{}'&quot;, service.getNetwork().getName());</span>
+<span class="fc" id="L29">    }</span>
 
     /**
      * Виконання команди для додавання нового тарифу.
@@ -27,67 +34,85 @@ public class AddTariff implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L30">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L37">        Scanner scanner = new Scanner(System.in);</span>
 
         try {
-<span class="fc" id="L33">            System.out.println(&quot;\nДодавання нового тарифу:&quot;);</span>
-<span class="fc" id="L34">            System.out.println(&quot;1. Передплачений тариф (Prepaid)&quot;);</span>
-<span class="fc" id="L35">            System.out.println(&quot;2. Контрактний тариф (Contract)&quot;);</span>
-<span class="fc" id="L36">            System.out.print(&quot;Ваш вибір: &quot;);</span>
+<span class="fc" id="L40">            logger.info(&quot;Розпочато виконання команди 'Додати тариф'&quot;);</span>
+<span class="fc" id="L41">            System.out.println(&quot;\nДодавання нового тарифу:&quot;);</span>
+<span class="fc" id="L42">            System.out.println(&quot;1. Передплачений тариф (Prepaid)&quot;);</span>
+<span class="fc" id="L43">            System.out.println(&quot;2. Контрактний тариф (Contract)&quot;);</span>
+<span class="fc" id="L44">            System.out.print(&quot;Ваш вибір: &quot;);</span>
 
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">            if (!scanner.hasNextInt()) {</span>
-<span class="nc" id="L39">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
-<span class="nc" id="L40">                return;</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">            if (!scanner.hasNextInt()) {</span>
+<span class="nc" id="L47">                logger.warn(&quot;Користувач ввів некоректний тип даних для вибору типу тарифу.&quot;);</span>
+<span class="nc" id="L48">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
+<span class="nc" id="L49">                return;</span>
             }
 
-<span class="fc" id="L43">            int choice = scanner.nextInt();</span>
-<span class="fc" id="L44">            scanner.nextLine();</span>
+<span class="fc" id="L52">            int choice = scanner.nextInt();</span>
+<span class="fc" id="L53">            scanner.nextLine(); // очищення буфера</span>
 
-<span class="pc bpc" id="L46" title="1 of 4 branches missed.">            if (choice &lt; 1 || choice &gt; 2) {</span>
-<span class="fc" id="L47">                System.out.println(&quot;Невірний вибір. Тариф не додано.&quot;);</span>
-<span class="fc" id="L48">                return;</span>
+<span class="pc bpc" id="L55" title="1 of 4 branches missed.">            if (choice &lt; 1 || choice &gt; 2) {</span>
+<span class="fc" id="L56">                logger.warn(&quot;Користувач зробив некоректний вибір: {}&quot;, choice);</span>
+<span class="fc" id="L57">                System.out.println(&quot;Невірний вибір. Тариф не додано.&quot;);</span>
+<span class="fc" id="L58">                return;</span>
             }
 
-<span class="fc" id="L51">            System.out.print(&quot;Введіть назву тарифу: &quot;);</span>
-<span class="fc" id="L52">            String name = scanner.nextLine();</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            logger.info(&quot;Користувач обрав тип тарифу: {}&quot;, choice == 1 ? &quot;Передплачений&quot; : &quot;Контрактний&quot;);</span>
 
-<span class="fc" id="L54">            System.out.print(&quot;Введіть щомісячну плату: &quot;);</span>
-<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if (!scanner.hasNextFloat()) {</span>
-<span class="nc" id="L56">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
-<span class="nc" id="L57">                return;</span>
-            }
-<span class="fc" id="L59">            float monthlyFee = scanner.nextFloat();</span>
+<span class="fc" id="L63">            System.out.print(&quot;Введіть назву тарифу: &quot;);</span>
+<span class="fc" id="L64">            String name = scanner.nextLine();</span>
+<span class="fc" id="L65">            logger.info(&quot;Користувач ввів назву тарифу: '{}'&quot;, name);</span>
 
-<span class="fc" id="L61">            System.out.print(&quot;Введіть кількість хвилин: &quot;);</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">            if (!scanner.hasNextInt()) {</span>
-<span class="nc" id="L63">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
-<span class="nc" id="L64">                return;</span>
-            }
-<span class="fc" id="L66">            int callMinutes = scanner.nextInt();</span>
-
-<span class="fc" id="L68">            System.out.print(&quot;Введіть кількість гігабайт: &quot;);</span>
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">            if (!scanner.hasNextFloat()) {</span>
+<span class="fc" id="L67">            System.out.print(&quot;Введіть щомісячну плату: &quot;);</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">            if (!scanner.hasNextFloat()) {</span>
+<span class="nc" id="L69">                logger.warn(&quot;Користувач ввів некоректний тип даних для місячної плати.&quot;);</span>
 <span class="nc" id="L70">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
 <span class="nc" id="L71">                return;</span>
             }
-<span class="fc" id="L73">            float gigabytes = scanner.nextFloat();</span>
+<span class="fc" id="L73">            float monthlyFee = scanner.nextFloat();</span>
+<span class="fc" id="L74">            logger.info(&quot;Користувач ввів щомісячну плату: {}&quot;, monthlyFee);</span>
 
-<span class="fc" id="L75">            scanner.nextLine();</span>
-
-<span class="fc bfc" id="L77" title="All 2 branches covered.">            if (choice == 1) {</span>
-<span class="fc" id="L78">                service.addTariff(new TariffPrepaid(name, monthlyFee, callMinutes, gigabytes));</span>
-<span class="fc" id="L79">                System.out.println(&quot;Передплачений тариф успішно додано.&quot;);</span>
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">            } else if (choice == 2) {</span>
-<span class="fc" id="L81">                System.out.print(&quot;Введіть додаткові послуги: &quot;);</span>
-<span class="fc" id="L82">                String services = scanner.nextLine();</span>
-
-<span class="fc" id="L84">                service.addTariff(new TariffContract(name, monthlyFee, callMinutes, gigabytes, services));</span>
-<span class="fc" id="L85">                System.out.println(&quot;Контрактний тариф успішно додано.&quot;);</span>
+<span class="fc" id="L76">            System.out.print(&quot;Введіть кількість хвилин: &quot;);</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            if (!scanner.hasNextInt()) {</span>
+<span class="nc" id="L78">                logger.warn(&quot;Користувач ввів некоректний тип даних для кількості хвилин.&quot;);</span>
+<span class="nc" id="L79">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
+<span class="nc" id="L80">                return;</span>
             }
+<span class="fc" id="L82">            int callMinutes = scanner.nextInt();</span>
+<span class="fc" id="L83">            logger.info(&quot;Користувач ввів кількість хвилин: {}&quot;, callMinutes);</span>
+
+<span class="fc" id="L85">            System.out.print(&quot;Введіть кількість гігабайт: &quot;);</span>
+<span class="pc bpc" id="L86" title="1 of 2 branches missed.">            if (!scanner.hasNextFloat()) {</span>
+<span class="nc" id="L87">                logger.warn(&quot;Користувач ввів некоректний тип даних для кількості гігабайт.&quot;);</span>
+<span class="nc" id="L88">                System.out.println(&quot;Некоректний ввід. Тариф не додано.&quot;);</span>
+<span class="nc" id="L89">                return;</span>
+            }
+<span class="fc" id="L91">            float gigabytes = scanner.nextFloat();</span>
+<span class="fc" id="L92">            logger.info(&quot;Користувач ввів кількість гігабайт: {}&quot;, gigabytes);</span>
+
+<span class="fc" id="L94">            scanner.nextLine(); // очищення буфера</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            if (choice == 1) {</span>
+<span class="fc" id="L97">                service.addTariff(new TariffPrepaid(name, monthlyFee, callMinutes, gigabytes));</span>
+<span class="fc" id="L98">                logger.info(&quot;Передплачений тариф '{}' успішно додано.&quot;, name);</span>
+<span class="fc" id="L99">                System.out.println(&quot;Передплачений тариф успішно додано.&quot;);</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">            } else if (choice == 2) {</span>
+<span class="fc" id="L101">                System.out.print(&quot;Введіть додаткові послуги: &quot;);</span>
+<span class="fc" id="L102">                String services = scanner.nextLine();</span>
+<span class="fc" id="L103">                logger.info(&quot;Користувач ввів додаткові послуги: '{}'&quot;, services);</span>
+
+<span class="fc" id="L105">                service.addTariff(new TariffContract(name, monthlyFee, callMinutes, gigabytes, services));</span>
+<span class="fc" id="L106">                logger.info(&quot;Контрактний тариф '{}' успішно додано.&quot;, name);</span>
+<span class="fc" id="L107">                System.out.println(&quot;Контрактний тариф успішно додано.&quot;);</span>
+            }
+<span class="nc" id="L109">        } catch (Exception e) {</span>
+<span class="nc" id="L110">            logger.error(&quot;Сталася помилка під час додавання тарифу: &quot;, e);</span>
         } finally {
-<span class="fc" id="L88">            scanner.close();</span>
+<span class="fc" id="L112">            logger.info(&quot;Завершено виконання команди 'Додати тариф'.&quot;);</span>
+<span class="fc" id="L113">            scanner.close();</span>
         }
-<span class="fc" id="L90">    }</span>
+<span class="fc" id="L115">    }</span>
 
     /**
      * Отримує назву команди.
@@ -96,7 +121,7 @@ public class AddTariff implements Command {
      */
     @Override
     public String getName() {
-<span class="fc" id="L99">        return &quot;Додати тариф&quot;;</span>
+<span class="fc" id="L124">        return &quot;Додати тариф&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

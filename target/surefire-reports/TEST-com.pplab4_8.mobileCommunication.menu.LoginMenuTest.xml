@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.064" tests="10" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.062" tests="10" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.class.path" value="C:\Users\maksym\IdeaProjects\pp4-8\target\test-classes;C:\Users\maksym\IdeaProjects\pp4-8\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="java.class.path" value="C:\Users\maksym\IdeaProjects\untitled\target\test-classes;C:\Users\maksym\IdeaProjects\untitled\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\maksym\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Temp\surefire12081418012290506158\surefirebooter-20241208021453574_3.jar C:\Temp\surefire12081418012290506158 2024-12-08T02-14-53_358-jvmRun1 surefire-20241208021453574_1tmp surefire_0-20241208021453574_2tmp"/>
+    <property name="sun.java.command" value="C:\Temp\surefire5314971262036910604\surefirebooter-20241209205358750_3.jar C:\Temp\surefire5314971262036910604 2024-12-09T20-53-58_597-jvmRun1 surefire-20241209205358750_1tmp surefire_0-20241209205358750_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\maksym\IdeaProjects\pp4-8\target\test-classes;C:\Users\maksym\IdeaProjects\pp4-8\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\maksym\IdeaProjects\untitled\target\test-classes;C:\Users\maksym\IdeaProjects\untitled\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\maksym\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\maksym"/>
     <property name="user.language" value="ru"/>
@@ -25,12 +25,12 @@
     <property name="java.version.date" value="2024-07-16"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-22"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\maksym\IdeaProjects\pp4-8"/>
+    <property name="basedir" value="C:\Users\maksym\IdeaProjects\untitled"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Temp\surefire12081418012290506158\surefirebooter-20241208021453574_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Temp\surefire5314971262036910604\surefirebooter-20241209205358750_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -45,7 +45,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Temp\"/>
     <property name="java.version" value="22.0.2"/>
-    <property name="user.dir" value="C:\Users\maksym\IdeaProjects\pp4-8"/>
+    <property name="user.dir" value="C:\Users\maksym\IdeaProjects\untitled"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -58,14 +58,134 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testHandleSubscriber" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.006"/>
-  <testcase name="testChooseRole_operatorSelected" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003"/>
-  <testcase name="testChooseRole_subscriberSelected" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.004"/>
-  <testcase name="testHandleService" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.006"/>
-  <testcase name="testLoginSubscriber_successfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.004"/>
-  <testcase name="testLoginService_successfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.004"/>
-  <testcase name="testLoginSubscriber_unsuccessfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.005"/>
-  <testcase name="testExecute_operatorLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.009"/>
-  <testcase name="testExecute_subscriberLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.008"/>
-  <testcase name="testLoginService_unsuccessfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003"/>
+  <testcase name="testHandleSubscriber" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.005">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [INFO] - Обробка абонента: 'Subscriber1'.
+[2024-12-09 20:54:08] [INFO] - Абонент 'Subscriber1' завершив роботу.
+]]></system-out>
+  </testcase>
+  <testcase name="testChooseRole_operatorSelected" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.005">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+]]></system-out>
+  </testcase>
+  <testcase name="testChooseRole_subscriberSelected" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+]]></system-out>
+  </testcase>
+  <testcase name="testHandleService" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.006">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [INFO] - Обробка мобільного оператора: 'TestNetwork1'.
+[2024-12-09 20:54:08] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - MainMenu ініціалізовано для ролі: 'Мобільний оператор'. Доступно 4 команд.
+[2024-12-09 20:54:08] [INFO] - Виконання MainMenu для ролі 'Мобільний оператор' розпочато.
+[2024-12-09 20:54:08] [INFO] - Відображено меню для ролі 'Мобільний оператор'.
+[2024-12-09 20:54:08] [INFO] - Користувач вибрав вихід з меню.
+[2024-12-09 20:54:08] [INFO] - Виконання MainMenu для ролі 'Мобільний оператор' завершено.
+[2024-12-09 20:54:08] [INFO] - Робота з мобільним оператором завершена: 'TestNetwork1'.
+]]></system-out>
+  </testcase>
+  <testcase name="testLoginSubscriber_successfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+]]></system-out>
+  </testcase>
+  <testcase name="testLoginService_successfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+]]></system-out>
+  </testcase>
+  <testcase name="testLoginSubscriber_unsuccessfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.005">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [WARN] - Невдалий вхід абонента: 'subscriber1'. Невірні облікові дані.
+]]></system-out>
+  </testcase>
+  <testcase name="testExecute_operatorLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.008">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [INFO] - Виконання LoginMenu розпочато.
+[2024-12-09 20:54:08] [INFO] - Користувач обрав роль: мобільний оператор.
+[2024-12-09 20:54:08] [INFO] - Вхід мобільного оператора 'TestNetwork1' успішний.
+[2024-12-09 20:54:08] [INFO] - Обробка мобільного оператора: 'TestNetwork1'.
+[2024-12-09 20:54:08] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - MainMenu ініціалізовано для ролі: 'Мобільний оператор'. Доступно 4 команд.
+[2024-12-09 20:54:08] [INFO] - Виконання MainMenu для ролі 'Мобільний оператор' розпочато.
+[2024-12-09 20:54:08] [INFO] - Відображено меню для ролі 'Мобільний оператор'.
+[2024-12-09 20:54:08] [INFO] - Користувач вибрав вихід з меню.
+[2024-12-09 20:54:08] [INFO] - Виконання MainMenu для ролі 'Мобільний оператор' завершено.
+[2024-12-09 20:54:08] [INFO] - Робота з мобільним оператором завершена: 'TestNetwork1'.
+[2024-12-09 20:54:08] [INFO] - Виконання LoginMenu завершено.
+]]></system-out>
+  </testcase>
+  <testcase name="testExecute_subscriberLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.005">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [INFO] - Виконання LoginMenu розпочато.
+[2024-12-09 20:54:08] [INFO] - Користувач обрав роль: абонент.
+[2024-12-09 20:54:08] [INFO] - Вхід абонента 'Subscriber1' успішний.
+[2024-12-09 20:54:08] [INFO] - Обробка абонента: 'Subscriber1'.
+[2024-12-09 20:54:08] [INFO] - Абонент 'Subscriber1' завершив роботу.
+[2024-12-09 20:54:08] [INFO] - Виконання LoginMenu завершено.
+]]></system-out>
+  </testcase>
+  <testcase name="testLoginService_unsuccessfulLogin" classname="com.pplab4_8.mobileCommunication.menu.LoginMenuTest" time="0.003">
+    <system-out><![CDATA[[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork1', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork1'
+[2024-12-09 20:54:08] [INFO] - Створено мобільну мережу 'TestNetwork2', кількість тарифів: 0
+[2024-12-09 20:54:08] [INFO] - Створено сервіс мобільної мережі для мережі 'TestNetwork2'
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber1', вік = 18
+[2024-12-09 20:54:08] [INFO] - Створено нового абонента: ім'я = 'Subscriber2', вік = 25
+[2024-12-09 20:54:08] [INFO] - LoginMenu ініціалізовано з 2 операторами та 2 абонентами.
+[2024-12-09 20:54:08] [WARN] - Невдалий вхід мобільного оператора: 'operator1'. Невірні облікові дані.
+]]></system-out>
+  </testcase>
 </testsuite>

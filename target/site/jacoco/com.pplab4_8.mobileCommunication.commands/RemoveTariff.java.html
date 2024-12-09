@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RemoveTariff.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.commands</a> &gt; <span class="el_source">RemoveTariff.java</span></div><h1>RemoveTariff.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.commands;
 
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
-import com.pplab4_8.mobileCommunication.tariffs.*;
+import com.pplab4_8.mobileCommunication.tariffs.TariffPrepaid;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -10,6 +12,7 @@ import java.util.Scanner;
  * Дозволяє видалити тариф за його назвою.
  */
 public class RemoveTariff implements Command {
+<span class="fc" id="L15">    private static final Logger logger = LogManager.getLogger(RemoveTariff.class);</span>
     private MobileNetworkService service;
 
     /**
@@ -17,9 +20,9 @@ public class RemoveTariff implements Command {
      *
      * @param service сервіс мобільної мережі, який використовується для роботи з тарифами.
      */
-<span class="fc" id="L20">    public RemoveTariff(MobileNetworkService service) {</span>
-<span class="fc" id="L21">        this.service = service;</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L23">    public RemoveTariff(MobileNetworkService service) {</span>
+<span class="fc" id="L24">        this.service = service;</span>
+<span class="fc" id="L25">    }</span>
 
     /**
      * Виконує видалення тарифу з системи.
@@ -28,19 +31,43 @@ public class RemoveTariff implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L31">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L34">        logger.info(&quot;Початок виконання команди 'Видалити тариф'.&quot;);</span>
+<span class="fc" id="L35">        Scanner scanner = new Scanner(System.in);</span>
 
-<span class="fc" id="L33">        System.out.print(&quot;\nВведіть назву тарифу для видалення: &quot;);</span>
-<span class="fc" id="L34">        String name = scanner.nextLine();</span>
-<span class="fc" id="L35">        TariffPrepaid tariff = service.searchTariffByName(name);</span>
+        try {
+<span class="fc" id="L38">            System.out.print(&quot;\nВведіть назву тарифу для видалення: &quot;);</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (!scanner.hasNextLine()) {</span>
+<span class="nc" id="L40">                logger.warn(&quot;Користувач не ввів назву тарифу.&quot;);</span>
+<span class="nc" id="L41">                System.out.println(&quot;Помилка: введення завершено.&quot;);</span>
+<span class="nc" id="L42">                return;</span>
+            }
 
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (tariff != null) {</span>
-<span class="fc" id="L38">            service.removeTariff(tariff);</span>
-<span class="fc" id="L39">            System.out.println(&quot;Тариф успішно видалено.&quot;);</span>
-        } else {
-<span class="fc" id="L41">            System.out.println(&quot;Тариф не знайдено.&quot;);</span>
+<span class="fc" id="L45">            String name = scanner.nextLine();</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            if (name.trim().isEmpty()) {</span>
+<span class="fc" id="L47">                logger.warn(&quot;Введено порожню назву тарифу.&quot;);</span>
+<span class="fc" id="L48">                System.out.println(&quot;Помилка: введена назва тарифу порожня.&quot;);</span>
+<span class="fc" id="L49">                return;</span>
+            }
+
+<span class="fc" id="L52">            logger.info(&quot;Користувач ввів назву тарифу для видалення: '{}'&quot;, name);</span>
+
+<span class="fc" id="L54">            TariffPrepaid tariff = service.searchTariffByName(name);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (tariff != null) {</span>
+<span class="fc" id="L56">                logger.info(&quot;Тариф знайдено: {}&quot;, tariff);</span>
+<span class="fc" id="L57">                service.removeTariff(tariff);</span>
+<span class="fc" id="L58">                logger.info(&quot;Тариф '{}' успішно видалено.&quot;, name);</span>
+<span class="fc" id="L59">                System.out.println(&quot;Тариф успішно видалено.&quot;);</span>
+            } else {
+<span class="fc" id="L61">                logger.warn(&quot;Тариф з назвою '{}' не знайдено.&quot;, name);</span>
+<span class="fc" id="L62">                System.out.println(&quot;Тариф не знайдено.&quot;);</span>
+            }
+<span class="nc" id="L64">        } catch (Exception e) {</span>
+<span class="nc" id="L65">            logger.error(&quot;Виникла помилка під час виконання команди 'Видалити тариф'.&quot;, e);</span>
+        } finally {
+<span class="fc" id="L67">            scanner.close();</span>
+<span class="fc" id="L68">            logger.info(&quot;Завершення виконання команди 'Видалити тариф'.&quot;);</span>
         }
-<span class="fc" id="L43">    }</span>
+<span class="fc" id="L70">    }</span>
 
     /**
      * Отримує назву команди.
@@ -49,7 +76,7 @@ public class RemoveTariff implements Command {
      */
     @Override
     public String getName() {
-<span class="fc" id="L52">        return &quot;Видалити тариф&quot;;</span>
+<span class="fc" id="L79">        return &quot;Видалити тариф&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ViewTariffs.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pp4-8</a> &gt; <a href="index.source.html" class="el_package">com.pplab4_8.mobileCommunication.commands</a> &gt; <span class="el_source">ViewTariffs.java</span></div><h1>ViewTariffs.java</h1><pre class="source lang-java linenums">package com.pplab4_8.mobileCommunication.commands;
 
 import com.pplab4_8.mobileCommunication.service.MobileNetworkService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ import java.util.Scanner;
  * Додатково дозволяє підрахувати кількість клієнтів або відсортувати тарифи за абонплатою.
  */
 public class ViewTariffs implements Command {
+<span class="fc" id="L14">    private static final Logger logger = LogManager.getLogger(ViewTariffs.class);</span>
     private MobileNetworkService service;
 
     /**
@@ -16,9 +19,9 @@ public class ViewTariffs implements Command {
      *
      * @param service сервіс мобільної мережі для роботи з тарифами.
      */
-<span class="fc" id="L19">    public ViewTariffs(MobileNetworkService service) {</span>
-<span class="fc" id="L20">        this.service = service;</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L22">    public ViewTariffs(MobileNetworkService service) {</span>
+<span class="fc" id="L23">        this.service = service;</span>
+<span class="fc" id="L24">    }</span>
 
     /**
      * Виконує команду перегляду тарифів.
@@ -28,30 +31,44 @@ public class ViewTariffs implements Command {
      */
     @Override
     public void execute() {
-<span class="fc" id="L31">        var tariffs = service.viewTariffs();</span>
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (tariffs.isEmpty()) {</span>
-<span class="fc" id="L33">            System.out.println(&quot;Список тарифів порожній.&quot;);</span>
-<span class="fc" id="L34">            return;</span>
+<span class="fc" id="L34">        logger.info(&quot;Виконання команди 'Переглянути наявні тарифи'&quot;);</span>
+
+<span class="fc" id="L36">        var tariffs = service.viewTariffs();</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (tariffs.isEmpty()) {</span>
+<span class="fc" id="L38">            logger.warn(&quot;Список тарифів порожній.&quot;);</span>
+<span class="fc" id="L39">            System.out.println(&quot;Список тарифів порожній.&quot;);</span>
+<span class="fc" id="L40">            return;</span>
         }
 
-<span class="fc" id="L37">        System.out.println(&quot;\nСписок тарифів:&quot;);</span>
-<span class="fc" id="L38">        tariffs.forEach(System.out::println);</span>
+<span class="fc" id="L43">        logger.info(&quot;Виведення списку тарифів.&quot;);</span>
+<span class="fc" id="L44">        System.out.println(&quot;\nСписок тарифів:&quot;);</span>
+<span class="fc" id="L45">        tariffs.forEach(System.out::println);</span>
 
-<span class="fc" id="L40">        System.out.println(&quot;\n1. Підрахувати клієнтів&quot;);</span>
-<span class="fc" id="L41">        System.out.println(&quot;2. Відсортувати за абонплатою&quot;);</span>
-<span class="fc" id="L42">        System.out.println(&quot;3. Завершити&quot;);</span>
-<span class="fc" id="L43">        Scanner scanner = new Scanner(System.in);</span>
+<span class="fc" id="L47">        System.out.println(&quot;\n1. Підрахувати клієнтів&quot;);</span>
+<span class="fc" id="L48">        System.out.println(&quot;2. Відсортувати за абонплатою&quot;);</span>
+<span class="fc" id="L49">        System.out.println(&quot;3. Завершити&quot;);</span>
+<span class="fc" id="L50">        Scanner scanner = new Scanner(System.in);</span>
 
         // Виконання вибору дії
-<span class="fc bfc" id="L46" title="All 3 branches covered.">        switch (scanner.nextInt()) {</span>
-<span class="fc" id="L47">            case 1 -&gt; System.out.println(&quot;Клієнтів: &quot; + service.calculateTotalClients());</span>
-            case 2 -&gt; {
-<span class="fc" id="L49">                service.sortTariffsByFee();</span>
-<span class="fc" id="L50">                System.out.println(&quot;Тарифи відсортовано.&quot;);</span>
-<span class="fc" id="L51">            }</span>
-<span class="fc" id="L52">            default -&gt; System.out.println(&quot;Завершено.&quot;);</span>
+<span class="fc" id="L53">        int choice = scanner.nextInt();</span>
+<span class="fc" id="L54">        logger.info(&quot;Користувач вибрав опцію: {}&quot;, choice);</span>
+
+<span class="fc bfc" id="L56" title="All 3 branches covered.">        switch (choice) {</span>
+            case 1:
+<span class="fc" id="L58">                logger.info(&quot;Підрахунок клієнтів.&quot;);</span>
+<span class="fc" id="L59">                System.out.println(&quot;Клієнтів: &quot; + service.calculateTotalClients());</span>
+<span class="fc" id="L60">                break;</span>
+            case 2:
+<span class="fc" id="L62">                logger.info(&quot;Сортування тарифів за абонплатою.&quot;);</span>
+<span class="fc" id="L63">                service.sortTariffsByFee();</span>
+<span class="fc" id="L64">                System.out.println(&quot;Тарифи відсортовано.&quot;);</span>
+<span class="fc" id="L65">                break;</span>
+            default:
+<span class="fc" id="L67">                logger.info(&quot;Завершення роботи команди.&quot;);</span>
+<span class="fc" id="L68">                System.out.println(&quot;Завершено.&quot;);</span>
+                break;
         }
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L71">    }</span>
 
     /**
      * Отримує назву команди.
@@ -60,7 +77,7 @@ public class ViewTariffs implements Command {
      */
     @Override
     public String getName() {
-<span class="fc" id="L63">        return &quot;Переглянути наявні тарифи&quot;;</span>
+<span class="fc" id="L80">        return &quot;Переглянути наявні тарифи&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

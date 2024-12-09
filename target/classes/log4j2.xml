@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
-    <Appenders>
-        <!-- Лог-файл -->
-        <File name="FileLogger" fileName="logs/app.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
-        </File>
+<!-- Конфігураційний файл для Log4j -->
 
-        <!-- Консольний логер -->
+<Configuration status="WARN">
+    <!-- Налаштування аппендерів (місць, куди записуються логи) -->
+    <Appenders>
+        <!-- Аппендер для виводу логів у консоль -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
+            <!-- Шаблон для форматування повідомлень -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%p] - %m%n" />
         </Console>
 
-        <!-- Email для критичних помилок -->
-        <SMTP name="Email" subject="Log Error Notification"
+        <!-- Аппендер для запису логів у файл -->
+        <File name="FileLogger" fileName="logs/app.log" append="true">
+            <!-- Шаблон для форматування повідомлень -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%p] - %m%n" />
+        </File>
+
+        <!-- Аппендер для надсилання логів електронною поштою -->
+        <Smtp name="Email" subject="Критична помилка у програмі"
               to="maksymmomotok1@gmail.com"
               from="maksymmomotok1@gmail.com"
-              smtpHost="smtp.gmail.com"
-              smtpPort="587"
-              smtpUsername="maksymmomotok1@gmail.com"
-              smtpPassword="husd hzhe lxfw ozma"
-              bufferSize="512"
-              smtpProtocol="smtp">
-            <PatternLayout>
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n</Pattern>
-            </PatternLayout>
-        </SMTP>
+              smtpHost="smtp.gmail.com" smtpPort="587"
+              smtpProtocol="smtp"
+              smtpUsername="maksymmomotok1@gmail.com" smtpPassword="tnxd ocuc wcfk iqoi">
+            <!-- Шаблон для форматування повідомлень -->
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss}] [%p] - %m%n" />
+        </Smtp>
     </Appenders>
 
+    <!-- Налаштування логерів (рівнів логування) -->
     <Loggers>
-        <!-- Кореневий логер -->
+        <!-- Головний логер з рівнем "info" -->
         <Root level="info">
-            <AppenderRef ref="FileLogger"/>
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="Email"/>
+            <!-- Посилання на аппендери -->
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="FileLogger" />
+            <!-- Логи рівня "error" та вище також будуть надсилатися електронною поштою -->
+            <AppenderRef ref="Email" level="error" />
         </Root>
     </Loggers>
 </Configuration>

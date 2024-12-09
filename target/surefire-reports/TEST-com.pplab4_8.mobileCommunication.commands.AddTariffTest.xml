@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.129" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="1.79" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.class.path" value="C:\Users\maksym\IdeaProjects\pp4-8\target\test-classes;C:\Users\maksym\IdeaProjects\pp4-8\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="java.class.path" value="C:\Users\maksym\IdeaProjects\untitled\target\test-classes;C:\Users\maksym\IdeaProjects\untitled\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\maksym\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Temp\surefire12081418012290506158\surefirebooter-20241208021453574_3.jar C:\Temp\surefire12081418012290506158 2024-12-08T02-14-53_358-jvmRun1 surefire-20241208021453574_1tmp surefire_0-20241208021453574_2tmp"/>
+    <property name="sun.java.command" value="C:\Temp\surefire5314971262036910604\surefirebooter-20241209205358750_3.jar C:\Temp\surefire5314971262036910604 2024-12-09T20-53-58_597-jvmRun1 surefire-20241209205358750_1tmp surefire_0-20241209205358750_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\maksym\IdeaProjects\pp4-8\target\test-classes;C:\Users\maksym\IdeaProjects\pp4-8\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\maksym\IdeaProjects\untitled\target\test-classes;C:\Users\maksym\IdeaProjects\untitled\target\classes;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.2\junit-jupiter-api-5.8.2.jar;C:\Users\maksym\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-commons\1.8.2\junit-platform-commons-1.8.2.jar;C:\Users\maksym\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\maksym\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.2\junit-jupiter-engine-5.8.2.jar;C:\Users\maksym\.m2\repository\org\junit\platform\junit-platform-engine\1.8.2\junit-platform-engine-1.8.2.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-core\5.5.0\mockito-core-5.5.0.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy\1.14.6\byte-buddy-1.14.6.jar;C:\Users\maksym\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.6\byte-buddy-agent-1.14.6.jar;C:\Users\maksym\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\maksym\.m2\repository\org\mockito\mockito-junit-jupiter\5.5.0\mockito-junit-jupiter-5.5.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\maksym\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\maksym\.m2\repository\javax\mail\mail\1.4.7\mail-1.4.7.jar;C:\Users\maksym\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\maksym\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\maksym"/>
     <property name="user.language" value="ru"/>
@@ -25,12 +25,12 @@
     <property name="java.version.date" value="2024-07-16"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-22"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\maksym\IdeaProjects\pp4-8"/>
+    <property name="basedir" value="C:\Users\maksym\IdeaProjects\untitled"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Temp\surefire12081418012290506158\surefirebooter-20241208021453574_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Temp\surefire5314971262036910604\surefirebooter-20241209205358750_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.2+9-70"/>
@@ -45,7 +45,7 @@
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Temp\"/>
     <property name="java.version" value="22.0.2"/>
-    <property name="user.dir" value="C:\Users\maksym\IdeaProjects\pp4-8"/>
+    <property name="user.dir" value="C:\Users\maksym\IdeaProjects\untitled"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -58,8 +58,58 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testGetName" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.056"/>
-  <testcase name="testInvalidChoice" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.011"/>
-  <testcase name="testAddPrepaidTariff" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.008"/>
-  <testcase name="testAddContractTariff" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.007"/>
+  <testcase name="testGetName" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="1.665">
+    <system-out><![CDATA[[2024-12-09 20:54:02] [INFO] - Створено нову мобільну мережу з іменем за замовчуванням.
+[2024-12-09 20:54:02] [INFO] - Створено сервіс мобільної мережі для мережі ''
+[2024-12-09 20:54:02] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі ''
+[2024-12-09 20:54:02] [INFO] - Створено нову мобільну мережу з іменем за замовчуванням.
+[2024-12-09 20:54:02] [INFO] - Створено сервіс мобільної мережі для мережі ''
+[2024-12-09 20:54:02] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі ''
+]]></system-out>
+  </testcase>
+  <testcase name="testInvalidChoice" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.016">
+    <system-out><![CDATA[[2024-12-09 20:54:02] [INFO] - Створено нову мобільну мережу з іменем за замовчуванням.
+[2024-12-09 20:54:02] [INFO] - Створено сервіс мобільної мережі для мережі ''
+[2024-12-09 20:54:02] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі ''
+[2024-12-09 20:54:02] [INFO] - Розпочато виконання команди 'Додати тариф'
+[2024-12-09 20:54:02] [WARN] - Користувач зробив некоректний вибір: 3
+[2024-12-09 20:54:02] [INFO] - Завершено виконання команди 'Додати тариф'.
+]]></system-out>
+  </testcase>
+  <testcase name="testAddPrepaidTariff" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.031">
+    <system-out><![CDATA[[2024-12-09 20:54:02] [INFO] - Створено нову мобільну мережу з іменем за замовчуванням.
+[2024-12-09 20:54:02] [INFO] - Створено сервіс мобільної мережі для мережі ''
+[2024-12-09 20:54:02] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі ''
+[2024-12-09 20:54:02] [INFO] - Розпочато виконання команди 'Додати тариф'
+[2024-12-09 20:54:02] [INFO] - Користувач обрав тип тарифу: Передплачений
+[2024-12-09 20:54:02] [INFO] - Користувач ввів назву тарифу: 'Prepaid Plan'
+[2024-12-09 20:54:02] [INFO] - Користувач ввів щомісячну плату: 100.0
+[2024-12-09 20:54:02] [INFO] - Користувач ввів кількість хвилин: 200
+[2024-12-09 20:54:02] [INFO] - Користувач ввів кількість гігабайт: 5.0
+[2024-12-09 20:54:02] [INFO] - Створено новий тариф передплати: ім'я = 'Prepaid Plan', місячна плата = 100.0, хвилини дзвінків = 200, гігабайти інтернету = 5.0
+[2024-12-09 20:54:02] [INFO] - Додано новий тариф 'Prepaid Plan' до мережі ''. Загальна кількість тарифів: 1.
+[2024-12-09 20:54:02] [INFO] - Додано тариф 'Prepaid Plan' до мережі ''
+[2024-12-09 20:54:02] [INFO] - Передплачений тариф 'Prepaid Plan' успішно додано.
+[2024-12-09 20:54:02] [INFO] - Завершено виконання команди 'Додати тариф'.
+]]></system-out>
+  </testcase>
+  <testcase name="testAddContractTariff" classname="com.pplab4_8.mobileCommunication.commands.AddTariffTest" time="0.026">
+    <system-out><![CDATA[[2024-12-09 20:54:02] [INFO] - Створено нову мобільну мережу з іменем за замовчуванням.
+[2024-12-09 20:54:02] [INFO] - Створено сервіс мобільної мережі для мережі ''
+[2024-12-09 20:54:02] [INFO] - Ініціалізовано команду 'Додати тариф' для мережі ''
+[2024-12-09 20:54:02] [INFO] - Розпочато виконання команди 'Додати тариф'
+[2024-12-09 20:54:02] [INFO] - Користувач обрав тип тарифу: Контрактний
+[2024-12-09 20:54:02] [INFO] - Користувач ввів назву тарифу: 'Contract Plan'
+[2024-12-09 20:54:02] [INFO] - Користувач ввів щомісячну плату: 150.0
+[2024-12-09 20:54:02] [INFO] - Користувач ввів кількість хвилин: 300
+[2024-12-09 20:54:02] [INFO] - Користувач ввів кількість гігабайт: 10.0
+[2024-12-09 20:54:02] [INFO] - Користувач ввів додаткові послуги: 'Additional Services'
+[2024-12-09 20:54:02] [INFO] - Створено новий тариф передплати: ім'я = 'Contract Plan', місячна плата = 150.0, хвилини дзвінків = 300, гігабайти інтернету = 10.0
+[2024-12-09 20:54:02] [INFO] - Створено новий контрактний тариф: ім'я = 'Contract Plan', місячна плата = 150.0, хвилини дзвінків = 300, гігабайти інтернету = 10.0, додаткові послуги = 'Additional Services'
+[2024-12-09 20:54:02] [INFO] - Додано новий тариф 'Contract Plan' до мережі ''. Загальна кількість тарифів: 1.
+[2024-12-09 20:54:02] [INFO] - Додано тариф 'Contract Plan' до мережі ''
+[2024-12-09 20:54:02] [INFO] - Контрактний тариф 'Contract Plan' успішно додано.
+[2024-12-09 20:54:02] [INFO] - Завершено виконання команди 'Додати тариф'.
+]]></system-out>
+  </testcase>
 </testsuite>
